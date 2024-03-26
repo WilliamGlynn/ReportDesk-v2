@@ -72,5 +72,5 @@ export const courses_report = (async (req,res)=> {
   export const test = (async (req,res)=> {
     const test1 = await insertQuestionNoDate(1,1,1,1,null,null);
     const test2 = await insertQuestionYesDate(1,1,1,1,null,null, "2024-03-26 16:55:09");
-    res.send(test2)
+    res.send(test1)
   })
