@@ -43,12 +43,13 @@ export async function getCoursecodes(){
 }
 
 export async function getDailyReport(day){
+    console.log(day)
     const [rows] = await pool.query(`
     SELECT 
     (SELECT COUNT(*) 
-    FROM count WHERE dateOfCount = ?) as headCount, 
+    FROM count WHERE DATE(dateOfCount) = ?) as headCount, 
     (SELECT COUNT(*) 
-    FROM questions WHERE dateofQuestion = ?) as questionCount
+    FROM questions WHERE DATE(dateofQuestion) = ?) as questionCount;
     `, [day, day])
     console.log(rows)
     return rows
@@ -122,5 +123,25 @@ export async function getCoursesReport(year){
     LIMIT 5;
     `, [year])
     console.log(rows)
+    return rows
+}
+
+export async function insertQuestionNoDate(categoryID, locationID, durationID, courseID, notes, userID){
+    const [rows] = await pool.query(`
+    INSERT 
+    INTO Questions (categoryID, locationID, durationID, courseID, notes, userID)
+    VALUES(?,?,?,?,?,?);
+    `, [categoryID, locationID, durationID, courseID, notes, userID])
+    console.log(rows);
+    return rows
+}
+
+export async function insertQuestionYesDate(categoryID, locationID, durationID, courseID, notes, userID, dateOfQuestion){
+    const [rows] = await pool.query(`
+    INSERT 
+    INTO Questions (categoryID, locationID, durationID, courseID, notes, userID, dateOfQuestion)
+    VALUES(?,?,?,?,?,?,?);
+    `, [categoryID, locationID, durationID, courseID, notes, userID, dateOfQuestion])
+    console.log(rows);
     return rows
 }
