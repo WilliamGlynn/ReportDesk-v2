@@ -45,10 +45,10 @@
 
     <select name="categorydrop" id="categorydrop">
       <option value="" disabled selected>Category</option>
-      <option value="general">General</option>
-      <option value="directions">Directions</option>
-      <option value="scanner">Scanner</option>
-      <option value="technology">Technology</option>
+      <option value="1">General</option>
+      <option value="2">Directions</option>
+      <option value="3">Scanner</option>
+      <option value="4">Technology</option>
     </select>
 
       </div>
@@ -56,10 +56,9 @@
       <div clas="loc">
     <select name="locationdrop" id="locationdrop">
       <option value="" disabled selected>Location</option>
-      <option value="library">Library</option>
-      <option value="directions">Directions</option>
-      <option value="scanner">Scanner</option>
-      <option value="technology">Technology</option>
+      <option value="1">In Person</option>
+      <option value="2">Phone</option>
+      <option value="3">Online</option>
     </select>
 
     </div>
@@ -71,9 +70,9 @@
   <div class = "dur">
     <select name="durationdrop" id="durationdrop">
       <option value="" disabled selected>Duration</option>
-      <option value="5+">More than 5 minutes</option>
-      <option value="5-30">Between 5 to 30 minutes</option>
-      <option value="30+">More than 30 minutes</option>
+      <option value="1">More than 5 minutes</option>
+      <option value="2">Between 5 to 30 minutes</option>
+      <option value="3">More than 30 minutes</option>
     </select>
 
     </div>
@@ -85,9 +84,9 @@
       <div class="cour">
       <select name="coursecodedrop" id="coursecodedrop">
       <option value="" disabled selected>Course Code(Optional)</option>
-      
-        <%Object.entries(courseCodes).forEach(([key, value]) => {%>
-        <option value="<%=key%>"><%=value.courseCode%></option>
+        <%let x=1;%>
+        <% Object.entries(courseCodes).forEach(([key, value]) => {%>
+        <option value="<%= x++ %>"><%=value.courseCode%></option>
         <% }) %>
       
       </select>
