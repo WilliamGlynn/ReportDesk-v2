@@ -194,3 +194,27 @@ export async function insertQuestionYesDate(categoryID, locationID, durationID, 
     console.log(rows);
     return rows
 }
+
+export async function getLocationID(location){
+    const [rows] = await pool.query('Select locationID from locations WHERE location = ?' ,[location]);
+    console.log(rows)
+    return rows
+}
+
+export async function getCourseID(course){
+    const rows = await pool.query('Select courseID from courses WHERE coursecode = ?',[course]);
+    console.log(rows)
+    return rows
+}
+
+export async function getDurationID(duration){
+    const rows = pool.query('Select durationID from durations WHERE durations = ?',[duration]);
+    console.log(rows)
+    return rows
+}
+
+export async function insertQuestions(location,duration,course,notes,date){
+   const rows=pool.query('INSERT into Questions(questionID,categoryID,locationID,durationID,courseID,notes,dateOfQuestion,userID) Values (null,null,?,?,?,?,?,null',[location,duration,course,notes,date]);
+  console.log(rows)
+  return rows
+}
