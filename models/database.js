@@ -1,5 +1,6 @@
 import mysql from 'mysql2'
 import dotenv from 'dotenv'
+import bcrypt from 'bcrypt'
 dotenv.config()
 const pool = mysql.createPool({
     host: process.env.DB_HOST,
@@ -124,6 +125,54 @@ export async function getCoursesReport(year){
     `, [year])
     console.log(rows)
     return rows
+}
+
+export async function saveResetToken(email, token) {
+    try {
+      await pool.query(`
+        INSERT INTO password_resets (email, token, expires_at)
+        VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 1 HOUR))
+      `, [email, token]);
+      console.log('Reset token saved successfully');
+    } catch (error) {
+      console.error('Error saving reset token:', error);
+      throw error;
+    }
+  }
+
+  export async function getUserByResetToken(token) {
+    console.log('Received Token in getUserByResetToken:', token);
+    const [rows] = await pool.query(`
+      SELECT * 
+      FROM password_resets
+      WHERE expires_at > NOW()
+    `);
+    console.log('Reset Token Rows:', rows);
+  
+    for (const row of rows) {
+      const isMatch = await bcrypt.compare(token, row.token);
+      if (isMatch) {
+        return row;
+      }
+    }
+  
+    return null;
+  }
+
+export async function updatePassword(email, hashedPassword) {
+    const [result] = await pool.query(`
+      UPDATE Users 
+      SET password = ?
+      WHERE email = ?
+    `, [hashedPassword, email]);
+    console.log('Update Password Result:', result);
+  }
+
+  export async function deleteResetToken(email) {
+    await pool.query(`
+    DELETE FROM password_resets
+    WHERE email = ?
+    `, [email])
 }
 
 export async function insertQuestionNoDate(categoryID, locationID, durationID, courseID, notes, userID){

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Password Reset</title>
   <link rel="stylesheet" type="text/css" href="/css/Reset Password/page2.css">
 </head>
+
 <body>
   <div class="main">
     <div class="navbar">
@@ -13,16 +15,20 @@
       <h1>Report Desk</h1>
       <fieldset>
         <h2>Enter new Password</h2>
-        <strong><p>Password Requirements</p></strong>
+        <strong>
+          <p>Password Requirements</p>
+        </strong>
         <ul>
           <li>Password must be at least 8 characters long</li>
           <li>Password must have at least one number</li>
           <li>Password must have at least one special character</li>
           <li>Password must have a lower case and upper case letter</li>
         </ul>
-        <form>
-          <label for="new-password">New Password:</label>
-          <input type="password" id="new-password" name="new-password" required>
+        <form action="/users/set-new-password" method="POST">
+          <input type="hidden" name="token" value="<%= token %>">
+          <input type="hidden" name="email" value="<%= email %>">
+          <label for="newPassword">New Password:</label>
+          <input type="password" id="newPassword" name="newPassword" required>
           <br>
           <button type="submit">Reset Password</button>
         </form>
@@ -40,11 +46,10 @@
     const form = document.querySelector('form');
     form.addEventListener('submit', (event) => {
       event.preventDefault();
-
-      const newPassword = document.querySelector('#new-password').value;
+      const newPassword = document.querySelector('#newPassword').value;
       console.log('New password:', newPassword);
 
-      fetch('/set-new-password', {
+      fetch('/users/set-new-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -53,17 +58,21 @@
       })
         .then(response => {
           if (response.ok) {
-            alert('Password reset successful');
-            window.location.href = '/pages/password-reset/page3.html';
+            return response.json();
           } else {
-            alert('Password reset failed');
+            throw new Error('Password reset failed');
           }
+        })
+        .then(data => {
+          alert(data.message);
+          window.location.href = '/users/password-reset-success';
         })
         .catch(error => {
           console.error('Error:', error);
-          alert('An error occurred');
+          alert(error.message);
         });
     });
   </script>
 </body>
+
 </html>
