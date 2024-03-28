@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>Password Reset</title>
   <link rel="stylesheet" type="text/css" href="/css/Reset Password/page2.css">
 </head>
-
 <body>
   <div class="main">
     <div class="navbar">
@@ -24,7 +22,7 @@
           <li>Password must have at least one special character</li>
           <li>Password must have a lower case and upper case letter</li>
         </ul>
-        <form action="/users/set-new-password" method="POST">
+        <form id="passwordResetForm" action="/users/set-new-password" method="POST">
           <input type="hidden" name="token" value="<%= token %>">
           <input type="hidden" name="email" value="<%= email %>">
           <label for="newPassword">New Password:</label>
@@ -32,47 +30,58 @@
           <br>
           <button type="submit">Reset Password</button>
         </form>
+        <p id="passwordResult"></p>
       </fieldset>
     </div>
   </div>
 
+  <script src="/scripts/Checkers.js"></script>
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('token');
-    const email = urlParams.get('email');
-    console.log('Token:', token);
-    console.log('Email:', email);
+    const form = document.getElementById('passwordResetForm');
+    const passwordInput = document.getElementById('newPassword');
+    const passwordResult = document.getElementById('passwordResult');
 
-    const form = document.querySelector('form');
     form.addEventListener('submit', (event) => {
       event.preventDefault();
-      const newPassword = document.querySelector('#newPassword').value;
-      console.log('New password:', newPassword);
+      const formData = new FormData(form);
+      const newPassword = formData.get('newPassword');
+      const token = formData.get('token');
+      const email = formData.get('email');
 
-      fetch('/users/set-new-password', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ token, email, newPassword })
-      })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error('Password reset failed');
-          }
+      console.log('New password:', newPassword);
+      console.log('Token:', token);
+      console.log('Email:', email);
+
+      const check = new Check(newPassword, email);
+      const result = check.pChecker();
+
+      if (result === "Password Accepted") {
+        fetch('/users/set-new-password', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ token, email, newPassword })
         })
-        .then(data => {
-          alert(data.message);
-          window.location.href = '/users/password-reset-success';
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert(error.message);
-        });
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Password reset failed');
+            }
+          })
+          .then(data => {
+            alert(data.message);
+            window.location.href = '/users/password-reset-success';
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert(error.message);
+          });
+      } else {
+        passwordResult.textContent = result;
+      }
     });
   </script>
 </body>
-
 </html>
