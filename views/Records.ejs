@@ -91,9 +91,10 @@
       <select name="coursecodedrop" id="coursecodedrop">
       <option value="" disabled selected>Course Code(Optional)</option>
       
-        <%Object.entries(courseCodes).forEach(([key, value]) => {%>
-        <option value="<%=key%>"><%=value.courseCode%></option>
-        <% }) %>
+      <%let x=1;%>
+      <% Object.entries(courseCodes).forEach(([key, value]) => {%>
+      <option value="<%= x++ %>"><%=value.courseCode%></option>
+      <% }) %>
       
       </select>
 
