@@ -195,6 +195,16 @@ export async function insertQuestionYesDate(categoryID, locationID, durationID, 
     return rows
 }
 
+export async function insertHeadcount(headCount, userID){
+  const [rows] = await pool.query(`
+  INSERT 
+  INTO Count (headCount, userID)
+  VALUES(?,?);
+  `, [headCount, userID])
+  console.log(rows);
+  return rows
+}
+
 export async function getLocationID(location){
     const [rows] = await pool.query('Select locationID from locations WHERE location = ?' ,[location]);
     console.log(rows)
