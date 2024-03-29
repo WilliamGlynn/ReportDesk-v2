@@ -47,7 +47,7 @@ export async function getDailyReport(day){
     console.log(day)
     const [rows] = await pool.query(`
     SELECT 
-    (SELECT COUNT(*) 
+    (SELECT SUM(headCount) 
     FROM count WHERE DATE(dateOfCount) = ?) as headCount, 
     (SELECT COUNT(*) 
     FROM questions WHERE DATE(dateofQuestion) = ?) as questionCount;
@@ -196,11 +196,18 @@ export async function insertQuestionYesDate(categoryID, locationID, durationID, 
 }
 
 export async function insertHeadcount(headCount, userID){
+  const [rows] = await pool.query("INSERT INTO `count` (headCount, userID) VALUES(?,?)", [headCount,userID])
+  console.log(rows);
+  return rows
+}
+
+export async function checkLastHeadCount(datetime){
   const [rows] = await pool.query(`
-  INSERT 
-  INTO Count (headCount, userID)
-  VALUES(?,?);
-  `, [headCount, userID])
+    SELECT dateOfcount 
+    FROM count
+    ORDER BY  dateOfCount DESC
+    LIMIT 1
+  `, [datetime])
   console.log(rows);
   return rows
 }

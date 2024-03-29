@@ -3,7 +3,7 @@
 
 <head>
   <title>Library Webpage</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
     <link rel="stylesheet" type="text/css" href="/css/Headcount.css">
 </head>
 
@@ -33,12 +33,13 @@
       <section>
 
         <h3>Please update head count every 30 minutes</h3>
-
-        <textarea placeholder="Head count" id="headcount" name="headcount" rows="4" cols="50"></textarea>
-
+        <form action ="/reports/insertHeadcount" method="POST">
+        <input type="number" min="0" id="headcount" name="headcount" placeholder="Head count" required>
+        <input name="update" type="submit" value="Update">
+        </form>
+      
       </section>
 
-      <button>Update</button>
 </body>
 
 </html>
