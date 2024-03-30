@@ -17,7 +17,7 @@ routerUser.get('/set-new-password', (req, res) => { //takes you to the second pa
     const email = req.query.email; //gets the email from the url
     res.render('password-reset/page2', { token, email });   //renders the page and passes the token and email to the page
   });
-routerUser.post('/set-new-password', set_new_password) //this is the route that will be called when the user submits the new password form
+routerUser.post('/set-new-password', set_new_password)//this is the route that will be called when the user submits the new password form
 routerUser.get('/password-reset-success', (req, res) => { //takes you to the third page of the password reset process
     res.render('password-reset/page3');
 });

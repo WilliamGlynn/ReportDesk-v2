@@ -45,8 +45,8 @@ export const reset_password = (async (req, res) => {
 
   await saveResetToken(email, hash)
 
-  const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
+  const transporter = nodemailer.createTransport({ //this is what will send the email
+      host: 'smtp.gmail.com', 
       port: 465,
       secure: true,
       auth: {
@@ -55,19 +55,19 @@ export const reset_password = (async (req, res) => {
       }
   })
 
-  const mailOptions = {
+  const mailOptions = { //this is the email that will be sent
     from: process.env.EMAIL,
     to: email,
     subject: 'Password Reset Requested',
     html: `<p>Hi ${email}, you have requested a password reset</p><p>Click <a href="http://localhost:8080/users/set-new-password?token=${resetToken}&email=${email}">here</a> to reset your password</p>`
   };
 
-  await transporter.sendMail(mailOptions)
+  await transporter.sendMail(mailOptions) //this sends the email
 
-  res.status(200).send('Reset password link sent to your email address.')
+  res.status(200).send('Reset password link sent to your email address.') //this take me to a page with that text
 })
 
-export const set_new_password = (async (req, res) => {
+export const set_new_password = (async (req, res) => { 
   const token = req.body.token;
   console.log('Received Token:', token);
   const email = req.body.email;
