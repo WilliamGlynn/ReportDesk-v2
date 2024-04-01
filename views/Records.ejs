@@ -33,9 +33,7 @@
 
 <div class="formdiv">
 
-  <form action="/reports/insert-question" method="GET">   
-    <!-- GET or POST? -->
-
+  <form action="/reports/insert-question" method="POST">   
     <div>
       <h2 class="questionhead">Question</h2>
     </div>
@@ -77,9 +75,9 @@
   <div class = "dur">
     <select name="durationdrop" id="durationdrop" required>
       <option value="" disabled selected>Duration</option>
-      <option value="5+">More than 5 minutes</option>
-      <option value="5-30">Between 5 to 30 minutes</option>
-      <option value="30+">More than 30 minutes</option>
+      <option value="1">More than 5 minutes</option>
+      <option value="2">Between 5 to 30 minutes</option>
+      <option value="3">More than 30 minutes</option>
     </select>
 
     </div>

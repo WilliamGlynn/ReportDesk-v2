@@ -1,4 +1,4 @@
-import { getDailyReport, getMonthlyReport, getYearlyReport, getLocationReport, getDurationReport, getCoursesReport, insertQuestionNoDate, insertQuestionYesDate, insertHeadcount, checkLastHeadCount } from '../models/database.js';
+import { getDailyReport, getMonthlyReport, getYearlyReport, getLocationReport, getDurationReport, getCoursesReport, insertQuestionNoDate, insertQuestionYesDate, insertHeadcount, checkLastHeadCount,  getCoursecodes} from '../models/database.js';
 
 
 
@@ -92,3 +92,35 @@ export const courses_report = (async (req,res)=> {
     res.send(test1)
   })
 
+  export const insert_question = async (req, res) => {
+    // This extract form data from the request...
+    const categoryID = req.body.categorydrop;
+    const locationID = req.body.locationdrop;
+    const durationID = req.body.durationdrop;
+    const courseID = req.body.coursecodedrop;
+    const notes = req.body.notestext;
+    const dateOfQuestion = req.body.date
+    console.log(categoryID)
+    console.log(locationID)
+    console.log(durationID)
+    console.log(courseID)
+    console.log(notes)
+    console.log(dateOfQuestion)
+  
+   
+    try {
+        // Use the appropriate function
+        if (dateOfQuestion) {
+            await insertQuestionYesDate(categoryID, locationID, durationID, courseID, notes, null, dateOfQuestion + ' ' + req.body.time);
+        } else {
+            await insertQuestionNoDate(categoryID, locationID, durationID, courseID, notes, null);
+        }
+        // Redirect the user back 
+        const courseCodes = await getCoursecodes()
+        res.render("Records.ejs", {courseCodes})
+    } catch (error) {
+        
+        console.error('Error inserting question:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+  };
