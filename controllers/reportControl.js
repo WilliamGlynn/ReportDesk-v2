@@ -69,11 +69,6 @@ export const courses_report = (async (req,res)=> {
   res.render("Report-Preview-Courses.ejs",{courses,questions})
   })
 
-  export const test = (async (req,res)=> {
-    const test1 = await insertQuestionNoDate(1,1,1,1,null,null);
-    const test2 = await insertQuestionYesDate(1,1,1,1,null,null, "2024-03-26 16:55:09");
-    res.send(test1)
-  })
 
   export const head_count = (async (req,res)=> {
     //var formatedMysqlString = (new Date ((new Date((new Date(new Date())).toISOString() )).getTime() - ((new Date()).getTimezoneOffset()*60000))).toISOString().slice(0, 19).replace('T', ' ')
@@ -90,3 +85,10 @@ export const courses_report = (async (req,res)=> {
     res.send('Count Submitted Successfully <a href="/pages/headcount.html">Return to Count</a>')
     
   })
+
+  export const test = (async (req,res)=> {
+    const test1 = await insertQuestionNoDate(1,1,1,1,null,null);
+    const test2 = await insertQuestionYesDate(1,1,1,1,null,null, "2024-03-26 16:55:09");
+    res.send(test1)
+  })
+

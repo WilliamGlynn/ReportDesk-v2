@@ -2,6 +2,8 @@ import { getUsers, getUser, getUserByEmail, getCoursecodes, saveResetToken, upda
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
+// import { insertQuestions } from '../models/database.js';
+import { insertQuestionNoDate, insertQuestionYesDate } from '../models/database.js';
 
 
 export const user_list = (async (req,res)=> {
@@ -94,4 +96,30 @@ export const set_new_password = (async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+export const insert_question = async (req, res) => {
+  // This extract form data from the request...
+  const categoryID = req.query.categorydrop;
+  const locationID = req.query.locationdrop;
+  const durationID = req.query.durationdrop;
+  const courseID = req.query.coursecodedrop;
+  const notes = req.query.notestext;
+  const dateOfQuestion = req.query.date;
+
+ 
+  try {
+      // Use the appropriate function
+      if (dateOfQuestion) {
+          await insertQuestionYesDate(categoryID, locationID, durationID, courseID, notes, null, dateOfQuestion);
+      } else {
+          await insertQuestionNoDate(categoryID, locationID, durationID, courseID, notes, null);
+      }
+      // Redirect the user back 
+      res.redirect('/Records');
+  } catch (error) {
+      
+      console.error('Error inserting question:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+};
 

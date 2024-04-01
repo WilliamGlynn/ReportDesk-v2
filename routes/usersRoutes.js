@@ -1,7 +1,9 @@
 import express from 'express';
 
-import {user_list, user_by_id, user_by_email, get_course_codes, reset_password, set_new_password} from '../controllers/userControl.js'
+import {user_list, user_by_id, user_by_email, get_course_codes, reset_password, set_new_password, insert_question} from '../controllers/userControl.js'
 export const routerUser = express.Router()
+
+
 
 routerUser.get('/', user_list)
 routerUser.get('/getUser', user_by_id)
@@ -28,3 +30,5 @@ routerUser.get('/create-user', (req, res) => { //takes you to the create user pa
 routerUser.get('/manage-user', (req, res) => { //takes you to the manage user page
     res.render('Manage_users');
 });
+
+routerUser.get('/insert-question', insert_question);

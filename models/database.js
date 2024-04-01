@@ -230,8 +230,8 @@ export async function getDurationID(duration){
     return rows
 }
 
-export async function insertQuestions(location,duration,course,notes,date){
-   const rows=pool.query('INSERT into Questions(questionID,categoryID,locationID,durationID,courseID,notes,dateOfQuestion,userID) Values (null,null,?,?,?,?,?,null',[location,duration,course,notes,date]);
-  console.log(rows)
-  return rows
-}
+
+
+
+
+
