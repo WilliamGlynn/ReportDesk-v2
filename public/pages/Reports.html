@@ -27,28 +27,29 @@
     </header>
 <body>
 
-    <h2>Select a Report Type</h2>
+    <h2 class="reportdesk">Select a Report Type </h2>
     <div>
-    <form id="report" action="/reports/getDaily" method="GET">
-        <img src="/images/daily.webp" alt="daily"/> 
-        <p> Daily <input type="radio" name="radio1" value="1" checked onclick="document.getElementById('report').action='/reports/getDaily';"> </p> 
-        <img src="/images/monthly.png" alt="monthly">
-        <p> Monthly <input type="radio" name="radio1" value="2" onclick="document.getElementById('report').action='/reports/getMonthly';">  </p>
-        <img src="/images/yearly.png" alt="yearly">
-        <p> Yearly <input type="radio" name="radio1" value="3" onclick="document.getElementById('report').action='/reports/getYearly';"> </p>
-        <img src="/images/duration.webp" alt="duration">
-        <p> Duration <input type="radio" name="radio1" value="4" onclick="document.getElementById('report').action='/reports/getDuration';"> </p> 
-        <img src="/images/course.webp" alt="course">
-        <p> Course <input type="radio" name="radio1" value="5" onclick="document.getElementById('report').action='/reports/getCourses';"> </p>
-        <img src="/images/location.png" alt="location">
-        <p> Location <input type="radio" name="radio1" value="6" onclick="document.getElementById('report').action='/reports/getLocation';"> </p>
-    </form> 
+    <form id="report" action="/reports/getDaily" method="GET" class="container" class="center">
+       <figure class="s1"> <img src="/images/daily.webp" alt="daily">
+        <figcaption> Daily <input type="radio" name="radio1" value="1" checked onclick="document.getElementById('report').action='/reports/getDaily';"> </figcaption></figure>
+        <figure class="s2"> <img src="/images/monthly.png" alt="monthly" >
+            <figcaption> Monthly <input type="radio" name="radio1" value="2" onclick="document.getElementById('report').action='/reports/getMonthly';"> </figcaption></figure>
+            <figure class="s3"> <img src="/images/yearly.png" alt="yearly" >
+                <figcaption> Yearly <input type="radio" name="radio1" value="3" onclick="document.getElementById('report').action='/reports/getYearly';"> </figcaption></figure>
+            <figure class="s4"> <img src="/images/duration.webp" alt="duration" >
+                <figcaption> Duration <input type="radio" name="radio1" value="4" onclick="document.getElementById('report').action='/reports/getDuration';"> </figcaption></figure>
+            <figure class="s5"> <img src="/images/course.webp" alt="course">
+                <figcaption> Course <input type="radio" name="radio1" value="5" onclick="document.getElementById('report').action='/reports/getCourses';"> </figcaption></figure>
+            <figure class="s6"> <img src="/images/location.png" alt="location">
+                <figcaption> Location <input type="radio" name="radio1" value="6" onclick="document.getElementById('report').action='/reports/getLocation';"> </figcaption></figure>
+    
     </div>
 
     <p><input type="date" name="date" value="" required></p>
 
     <div>
         <button id="report" type="submit">View</button>
+    </form>
        <button><a href="Export_Import.html">Export/Import</a></button>
     </div>
 

@@ -124,3 +124,26 @@ nav a:hover{
     color: white;
     
     font-size: 2.5em;
+    }
+
+    .container{
+        display: grid;
+        grid-template-rows: 500px ;
+        grid-template-columns: 33% 33% 33%;
+        grid-column-gap:5px;
+        grid-template-areas:
+                  " sec1 sec2 sec3"
+                  "sec4  sec5 sec6";}
+      .s1 {grid-area: sec1;}
+      .s2 { grid-area: sec2;}
+      .s3 {grid-area: sec3;}
+      .s4 { grid-area: sec4;}
+      .s5 {grid-area: sec5;}
+      .s6 { grid-area: sec6;}
+       
+      .center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;}
+       

@@ -3,6 +3,7 @@
 <head>
   <title>Password Reset</title>
   <link rel="stylesheet" type="text/css" href="/css/Reset Password/page2.css">
+
 </head>
 <body>
   <div class="main">
@@ -10,17 +11,16 @@
       <div class="icon">
         <a class="navbar-brand" href="#"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a>
       </div>
-      <h1>Report Desk</h1>
       <fieldset>
-        <h2>Enter new Password</h2>
+        <h2>Enter New Password</h2>
         <strong>
           <p>Password Requirements</p>
         </strong>
         <ul>
-          <li>Password must be at least 8 characters long</li>
-          <li>Password must have at least one number</li>
-          <li>Password must have at least one special character</li>
-          <li>Password must have a lower case and upper case letter</li>
+           <li> - Password must be at least 8 characters long</li>
+          <li> - Password must have at least one number</li>
+          <li> - Password must have at least one special character</li>
+          <li> - Password must have a lower case and upper case letter</li>
         </ul>
         <form id="passwordResetForm" action="/users/set-new-password" method="POST">
           <input type="hidden" name="token" value="<%= token %>">
