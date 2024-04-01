@@ -3,84 +3,32 @@
 
 <head>
   <title>Library Webpage</title>
-    
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/Headcount.css">
 </head>
 
 <body>
-  <div class="main">
-    <div class="navbar">
-      <div class="icon">
-        <a class="navbar-brand" href="#"><img src="UNTDlogo.png" alt="UNTDlogo"></a>
-
-      </div>
-
-      <div class="menu">
-        <ul>
-          <li><a href="records.html">Records</a></li>
-          <li><a href="/users/create-user">Users</a></li>
-          
-          <li><a href="headcount.html">Count</a></li>
-
-          <li><a href="Reports.html">Reports</a></li>
-
-        </ul>
-      </div>
-      <h1>Report Desk</h1>
-
-      <h1>Head Count</h1>
-
-      <section>
-
-        <h3>Please update head count every 30 minutes</h3>
-        <form action ="/reports/insertHeadcount" method="POST">
-        <input type="number" min="0" id="headcount" name="headcount" placeholder="Head count" required>
-        <input name="update" type="submit" value="Update">
+ 
+<header>
+  <nav>
+      <a class="navbar-brand" href="https://www.untdallas.edu"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a>
+      <a class="navbuttons" href="records.html">Records</a>
+      <a class="navbuttons" href="create_user.html">Users</a>
+      <a class="navbuttons" href="Headcount.html">Count</a>
+      <a class="navbuttons" href="Reports.html">Reports</a>
+      <a href="/pages/homepage.html" class="reportdesk">ReportDesk</a>
+  </nav>
+</header>
+  <section class="container">
+        <section class="s1 center"><h1>Head Count</h1></section>
+        <section class="s2 center"><h3>Please update head count every 30 minutes</h3></section>
+        <form action ="/reports/insertHeadcount" method="POST" class="s3">
+        <section class="s3 center"><label> Current Headcount: <input type="number" min="0" id="headcount" name="headcount" placeholder="Head count" required>
+        <section class="s4 center"><input type ="submit" class="button"/></section>
         </form>
-      
       </section>
 
 </body>
 
 </html>
 
-
-<!-- <!DOCTYPE html>
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Count</title>
-</head>
-
-
-<body>
-    <header>
-        <nav>
-          <a href="records.html">Records</a> |
-          <a href="create_user.html">Users</a> |
-          <a href="headcount.html">Count</a> |
-          <a href="choose-Reports.html">Reports</a> |
-          <hr>
-        </nav>
-        
-      </header>
-
-      <hr>
-      <h1>Head Count</h1>
-
-      <section>
-
-        <h3>Please update head count every 30 minutes</h3>
-
-        <textarea placeholder="Head count" id="headcount" name="headcount" rows="4" cols="50"></textarea>
-
-      </section>
-
-      <button>Update</button>
-  
-    
-</body>
-
-</html> -->
