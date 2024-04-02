@@ -5,38 +5,54 @@
     <title>ReportType</title>
     <link rel="stylesheet" type="text/css" href="/css/report.css">
 </head>
-<body>
-    <h1>Report Desk</h1>
 
-    <h2>Select a Report Type</h2>
-    <div>
-        <img src="/images/daily.webp" alt="daily"/> 
-        <img src="/images/monthly.png" alt="monthly">
-        <img src="/images/yearly.png" alt="yearly">
-        <img src="/images/duration.webp" alt="duration">
-        <img src="/images/course.webp" alt="course">
-        <img src="/images/location.png" alt="location">
+<header>
+
+    <nav>
     
+    <a class="navbar-brand" href="https://www.untdallas.edu"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a>
+    
+    <a class="navbuttons" href="/users/getRecords">Records</a>
+    
+    <a class="navbuttons" href="/users/create-user">Users</a>
+    
+    <a class="navbuttons" href="Headcount.html">Count</a>
+    
+    <a class="navbuttons" href="Reports.html">Reports</a>
+    
+    <a href="/pages/homepage.html" class="reportdesk">ReportDesk</a>
+    
+    </nav>
+    
+    </header>
+<body>
 
-
+    <h2 class="reportdesk">Select a Report Type </h2>
+    <div>
+    <form id="report" action="/reports/getDaily" method="GET" class="container" class="center">
+       <figure class="s1"> <img src="/images/daily.webp" alt="daily">
+        <figcaption> Daily <input type="radio" name="radio1" value="1" checked onclick="document.getElementById('report').action='/reports/getDaily';"> </figcaption></figure>
+        <figure class="s2"> <img src="/images/monthly.png" alt="monthly" >
+            <figcaption> Monthly <input type="radio" name="radio1" value="2" onclick="document.getElementById('report').action='/reports/getMonthly';"> </figcaption></figure>
+            <figure class="s3"> <img src="/images/yearly.png" alt="yearly" >
+                <figcaption> Yearly <input type="radio" name="radio1" value="3" onclick="document.getElementById('report').action='/reports/getYearly';"> </figcaption></figure>
+            <figure class="s4"> <img src="/images/duration.webp" alt="duration" >
+                <figcaption> Duration <input type="radio" name="radio1" value="4" onclick="document.getElementById('report').action='/reports/getDuration';"> </figcaption></figure>
+            <figure class="s5"> <img src="/images/course.webp" alt="course">
+                <figcaption> Course <input type="radio" name="radio1" value="5" onclick="document.getElementById('report').action='/reports/getCourses';"> </figcaption></figure>
+            <figure class="s6"> <img src="/images/location.png" alt="location">
+                <figcaption> Location <input type="radio" name="radio1" value="6" onclick="document.getElementById('report').action='/reports/getLocation';"> </figcaption></figure>
+    
     </div>
 
+    <p><input type="date" name="date" value="" required></p>
+
     <div>
-        <form id="report" action="/reports/getDaily" method="GET">
-        <p> Daily <input type="radio" name="radio1" value="1" checked onclick="document.getElementById('report').action='/reports/getDaily';"> </p> 
-        <p> Monthly <input type="radio" name="radio1" value="2" onclick="document.getElementById('report').action='/reports/getMonthly';">  </p>
-        <p> Yearly <input type="radio" name="radio1" value="3" onclick="document.getElementById('report').action='/reports/getYearly';"> </p>
-        <p> Duration <input type="radio" name="radio1" value="4" onclick="document.getElementById('report').action='/reports/getDuration';"> </p> 
-        <p> Course <input type="radio" name="radio1" value="5" onclick="document.getElementById('report').action='/reports/getCourses';"> </p>
-        <p> Location <input type="radio" name="radio1" value="6" onclick="document.getElementById('report').action='/reports/getLocation';"> </p>
-        <p> Date <input type="date" name="date" value="" required > </p>
         <button id="report" type="submit">View</button>
-        </form>   
+    </form>
+       <button><a href="Export_Import.html">Export/Import</a></button>
     </div>
 
-    <div>
-        <p></p><a href="Export_Import.html">Export_Import</a><p></p>
-    </div>
 </body>
 
 

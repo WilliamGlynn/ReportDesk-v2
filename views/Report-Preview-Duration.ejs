@@ -9,11 +9,19 @@
 
 </head>
 <body>
-    <div class="main">
+  <header>
 
-          <nav>
-            <a href="/pages/Reports.html">Go Back</a>
-          </nav>
+    <nav>
+    
+    <a class="navbar-brand" href="https://www.untdallas.edu"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a>
+    
+    <a class="navbuttons" href="/pages/Reports.html">Back</a>
+    
+    <a href="/" class="reportdesk">ReportDesk</a>
+    
+    </nav>
+    
+    </header>
           <section title="Graph">
             <canvas id="myChart"></canvas> 
           </section>
@@ -41,7 +49,7 @@
                 },
                 options: 
                 {
-                title: {display: false,},
+                  title: {display: true, text: "Duration Report"},
                 plugins:{labels: {fontSize: 25,  fontColor: 'white',}}
                 }
                 });

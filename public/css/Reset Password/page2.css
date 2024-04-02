@@ -1,41 +1,53 @@
-html {
-    width: 100%;
+HTML{
+	width: 100%;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(/images/jaghead.png);
     background-position: center;
     background-size: cover;
     height: 100vh;
-  }
-  body {
+	color: white;
+}
+body {
 	margin: 0;
 	font-family: Arial, sans-serif;
 	padding: 0;
 }
 fieldset {
     position: relative;
-	border: 3px solid black ;
+	border-color: solid #073875;
+    background-color: #073875;
 	border-radius: 5px;
 	
 }
 h2 {
-	color: black;
+	
 	font-size: 24px;
 	font-weight: bold;
 	font-family: Arial, sans-serif;
 	text-align: center;
 }
 p {
-	color: black;
+	
 	font-family: Arial, sans-serif;
 	text-align: center;
 }
 
-
+ul{display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 li {
-    vertical-align: center;
-	padding: 10px 0;
-   
+    display: block;
+	flex:0 1 auto;
+    list-style-type: none;
+text-align: center;
+
 }
 form {
+    text-align: center;
+	padding: 10px 0;
 	width: 300px;
 	margin: 20px auto;
 }
@@ -43,20 +55,23 @@ label {
 	display: block;
 	margin-bottom: 0px;
 	font-weight: bold;
-}
+} 
 input[type="text"] {
 	width: 100%;
 	padding: 5px;
 	margin-bottom: 10px;
-	border: 2px solid black;
+	border-color: solid #073875;
+    background-color: #073875;
+	border-radius: 5px;
 	border-radius: 4px;
 	box-sizing: border-box;
 }
 	button {
-		background-color: black;
-		border: none;
-		color: white;
-		padding: 15px 32px;
-		text-align: center;
-		display: inline-block;
+	border: solid black;
+    background-color: black;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	display: inline-block;
+    cursor: pointer;
 	}
