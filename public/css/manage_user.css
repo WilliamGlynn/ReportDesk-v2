@@ -1,6 +1,5 @@
 html {
   width: 100%;
-  /* background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(/images/jaghead.png); */
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -76,28 +75,19 @@ nav {
   background-color: #426bba;
 }
 
-#userbox {
-  width: 50%;
-  margin: auto;
-  margin-top: 5%;
-  padding: 20px;
-  background-color: #073875;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.input-div {
-  display: flex;
-  flex-direction: column;
-}
-
-h1 {
+.usersheader {
+  position: relative;
   color: black;
-  font-size: 2em;
+  background-color: white;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-style: normal;
+  padding-left: 1.5em;
+  line-height: 2.0em;
+  font-size: 2.5em;
+  margin-top: 0px;
+  border-bottom: solid;
+  border-color: #073875;
+  text-align: left;
 }
 
 .email-div {
@@ -107,21 +97,29 @@ h1 {
   margin-top: 20px;
 }
 
-.email-div input[type=text] {
+.email-div h1 {
+  color: black;
+  font-size: 2em;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.email-div input[type="text"] {
   width: 200px;
   height: 25px;
   font-size: 14px;
   margin-left: 10px;
 }
 
-.save-delete {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.save-delete button {
-  margin: 0 10px;
+#userbox {
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #073875;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .user-info,
@@ -139,9 +137,32 @@ h1 {
   font-size: 1.2em;
 }
 
+.user-info input[type="text"],
+.user-info select {
+  font-size: 20px;
+  width: 12em;
+  margin-top: 1em;
+  border: 2px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #333;
+}
+
+.user-info input[type="text"]:hover,
+.user-info select:hover {
+  background-color: rgb(186, 234, 186);
+  color: #073875;
+}
+
 .viewable-reports h3 {
   color: white;
   font-size: 1.5em;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: column;
 }
 
 .input-div label {
@@ -149,16 +170,24 @@ h1 {
   font-size: 1.2em;
 }
 
-button {
+.save-delete {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.save-delete button {
   background-color: white;
   color: #1051A0;
   border: none;
   padding: 10px 20px;
   font-size: 1.2em;
   cursor: pointer;
+  margin: 0 10px;
+  border-radius: 4px;
 }
 
-button:hover {
+.save-delete button:hover {
   background-color: #426bba;
   color: white;
 }
@@ -168,4 +197,12 @@ button:hover {
   border-top: 3px solid #073875;
   margin: 20px 0;
   width: 100%;
+}
+
+footer p {
+  background-color: #1051A0;
+  color: white;
+  padding: 1.5em;
+  text-align: center;
+  margin-top: 100px;
 }
