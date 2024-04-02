@@ -1,59 +1,106 @@
 import fs from 'fs';
+import path from 'path';
 import { parse } from 'csv-parse';
+import xml2js from 'xml2js';
+import xlsx from 'xlsx';
 import { getLocationID, getCourseID, getDurationID, insertQuestions } from '../models/database.js';
 
 export const importData = async (req, res) => {
-    try {
-      const file = req.file;
-      const data = await parseFile(file.path);
-  
-      for (const record of data) {
-        const { location, duration, course, notes, date } = record;
-  
-        // Parse and convert the date format
-        const [month, day, year] = date.split('/');
-        const formattedDate = `${year}-${month}-${day}`;
-  
-        // Retrieve IDs for location, course, and duration
-        const locationIDResult = await getLocationID(location);
-        const durationIDResult = await getDurationID(duration);
-        const courseIDResult = await getCourseID(course);
-  
-        // Extract IDs from the result objects
-        const locationID = locationIDResult[0].locationID;
-        const durationID = durationIDResult[0].durationID;
-        const courseID = courseIDResult[0].courseID;
-  
-        // Insert question into the database
-        await insertQuestions(locationID, durationID, courseID, notes, formattedDate);
-      }
-  
-      res.status(200).json({ message: 'Data imported successfully.' });
-    } catch (error) {
-      console.error('Error during data import:', error);
-      res.status(500).json({ error: 'An error occurred during data import.' });
-    }
-  };
+  const file = req.file;
+  if (!file) {
+    return res.render('import', { error: 'No file was uploaded.' });
+  }
 
-function parseFile(filePath) {
+  const supportedFormats = ['.csv', '.xml', '.xlsx'];
+  const fileExtension = path.extname(file.originalname).toLowerCase();
+  if (!supportedFormats.includes(fileExtension)) {
+    fs.unlinkSync(file.path);
+    return res.render('import', { error: 'Unsupported file format. Please upload a CSV, XML, or Excel file.' });
+  }
+
+  const data = await parseFile(file.path, fileExtension);
+
+  for (const record of data) {
+    const { location, duration, course, notes, date } = record;
+    const [month, day, year] = date.split('/');
+    const formattedDate = `${year}-${month}-${day}`;
+
+    const [locationID] = await getLocationID(location);
+    const [durationID] = await getDurationID(duration);
+    const [courseID] = await getCourseID(course);
+
+    if (locationID && durationID && courseID) {
+      await insertQuestions(locationID.locationID, durationID.durationID, courseID.courseID, notes, formattedDate);
+    }
+  }
+
+  fs.unlinkSync(file.path);
+  res.render('import', { message: 'Data imported successfully.' });
+};
+
+async function parseFile(filePath, fileExtension) {
+  if (fileExtension === '.csv') {
+    return await parseCsvFile(filePath);
+  } else if (fileExtension === '.xml') {
+    return await parseXmlFile(filePath);
+  } else if (fileExtension === '.xlsx') {
+    return await parseExcelFile(filePath);
+  }
+}
+
+function parseCsvFile(filePath) { //
   return new Promise((resolve, reject) => {
     const data = [];
     fs.createReadStream(filePath)
-      .pipe(parse({ delimiter: ',', from_line: 3 })) // Start from line 2 to skip header
+      .pipe(parse({ delimiter: ',', from_line: 3 }))
       .on('data', (row) => {
-        // Validate row data and push to array
-        if (row.length === 5) { // Ensure correct number of columns
+        if (row.length === 5) {
           const [location, duration, course, notes, date] = row;
           data.push({ location, duration, course, notes, date });
-        } else {
-          console.warn('Invalid row:', row);
         }
       })
-      .on('error', (error) => {
-        reject(error);
-      })
-      .on('end', () => {
-        resolve(data);
-      });
+      .on('end', () => resolve(data));
   });
+}
+
+function parseXmlFile(filePath) {
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, (err, xmlData) => {
+        if (err) {
+          reject(err);
+        } else {
+          xml2js.parseString(xmlData, (err, result) => {
+            if (err) {
+              reject(err);
+            } else {
+              const entries = result.root.row;
+              const data = entries.map((entry) => ({
+                location: entry.Location[0],
+                duration: entry.Duration[0],
+                course: entry.Course[0],
+                notes: entry.Notes[0],
+                date: entry.Date[0],
+              }));
+              resolve(data);
+            }
+          });
+        }
+      });
+    });
+  }
+
+function parseExcelFile(filePath) {
+  const workbook = xlsx.readFile(filePath);
+  const sheetName = workbook.SheetNames[0];
+  const worksheet = workbook.Sheets[sheetName];
+  const data = xlsx.utils.sheet_to_json(worksheet, { header: 1 })
+    .slice(1)
+    .map((row) => ({
+      location: row[0],
+      duration: row[1],
+      course: row[2],
+      notes: row[3],
+      date: row[4],
+    }));
+  return data;
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ReportDesk Import Page</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/import.css">
+</head>
+<body>
+    <div class="main">
+        <!-- Paste the navigation bar here -->
+        <header>
+            <nav>
+                <a class="navbar-brand" href="https://www.untdallas.edu"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a>
+                <a class="navbuttons" href="/users/getRecords">Records</a>
+                <a class="navbuttons" href="/users/create-user">Users</a>
+                <a class="navbuttons" href="/pages/headcount.html">Count</a>
+                <a class="navbuttons" href="/pages/Reports.html">Reports</a>
+                <a href="/" class="reportdesk">ReportDesk</a>
+            </nav>
+        </header>
+        <!-- End of navigation bar -->
+      
+        
+        <section>
+            <p>The current file types the system accepts at the moment are XML and Excel. However, for either file, they should be formatted in the following way. For XML, each entry should have an associated category. Underneath it should include any information that is known for that entry.
+            <a href="XMLExample.xml" target="\_blank"> <strong>Here</strong></a> is an example of one.
+            </p>
+            <p>For the Excel spreadsheet, the top of it should include the date. With the rows having the time these questions were asked. While the columns have information about those questions.
+            <a href="EXCELexample.xlsx" target="\_blank"><strong>Here</strong></a> is an example of one.
+            </p>
+            <p>Please upload your file</p>
+            <form id="submit" action="/users/import" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".csv,.xml,.xlsx" /><br />
+                <input type="submit" value="Upload" />
+            </form>
+        </section>
+    </div>
+    <% if (typeof error !== 'undefined') { %>
+    <script> alert('<%= error %>'); window.location.href = '/users/import'; </script>
+    <% } %>
+    <% if (typeof message !== 'undefined') { %>
+    <script> alert('<%= message %>'); window.location.href = '/users/import'; </script>
+    <% } %>
+</body>
+</html>

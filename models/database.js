@@ -233,8 +233,8 @@ export async function getDurationID(duration) {
 export async function insertQuestions(locationID, durationID, courseID, notes, date) {
   try {
     const [rows] = await pool.query(`
-      INSERT INTO Questions (categoryID, locationID, durationID, courseID, notes, dateOfQuestion, userID) 
-      VALUES (null, ?, ?, ?, ?, STR_TO_DATE(?, '%Y-%m-%d'), null)
+      INSERT INTO Questions (categoryID, locationID, durationID, courseID, notes, dateOfQuestion, userID)
+      VALUES (null, ?, ?, ?, ?, ?, null)
     `, [locationID, durationID, courseID, notes, date]);
     console.log(rows);
     return rows;
