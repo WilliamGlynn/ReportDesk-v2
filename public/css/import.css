@@ -118,3 +118,13 @@ nav a:hover{
     font-size: 2.5em;
     
     }
+
+    #submit{
+        background-color: #073875;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor:pointer;
+        text-align: center;
+    }
