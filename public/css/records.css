@@ -51,16 +51,15 @@ nav {
 }
 
 @keyframes fadeInOut {
-
   0%,
   100% {
-    opacity: 0;
+    opacity: 1;
     color: white;
   }
 
   50% {
     opacity: 1;
-    color: yellow;
+    color: limegreen;
   }
 }
 
