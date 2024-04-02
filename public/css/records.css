@@ -197,3 +197,9 @@ img {
 
 
 }
+
+nav a:hover{
+
+  color: limegreen;
+  
+  }

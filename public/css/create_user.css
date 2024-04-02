@@ -143,3 +143,8 @@ button:hover {
   width: 100%;
 }
 
+nav a:hover{
+
+  color: limegreen;
+  
+  }

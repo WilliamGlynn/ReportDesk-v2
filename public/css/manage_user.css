@@ -169,3 +169,8 @@ button:hover {
   margin: 20px 0;
   width: 100%;
 }
+nav a:hover{
+
+            color: limegreen;
+            
+            }
