@@ -219,19 +219,28 @@ export async function getLocationID(location){
 }
 
 export async function getCourseID(course){
-    const rows = await pool.query('Select courseID from courses WHERE coursecode = ?',[course]);
+    const [rows] = await pool.query('Select courseID from courses WHERE coursecode = ?',[course]);
     console.log(rows)
     return rows
 }
 
-export async function getDurationID(duration){
-    const rows = pool.query('Select durationID from durations WHERE durations = ?',[duration]);
-    console.log(rows)
-    return rows
+export async function getDurationID(duration) {
+  const [rows] = await pool.query('SELECT durationID FROM durations WHERE duration = ?', [duration]);
+  console.log(rows);
+  return rows;
 }
 
-export async function insertQuestions(location,duration,course,notes,date){
-   const rows=pool.query('INSERT into Questions(questionID,categoryID,locationID,durationID,courseID,notes,dateOfQuestion,userID) Values (null,null,?,?,?,?,?,null',[location,duration,course,notes,date]);
-  console.log(rows)
-  return rows
+export async function insertQuestions(locationID, durationID, courseID, notes, date) {
+  try {
+    const [rows] = await pool.query(`
+      INSERT INTO Questions (categoryID, locationID, durationID, courseID, notes, dateOfQuestion, userID) 
+      VALUES (null, ?, ?, ?, ?, STR_TO_DATE(?, '%Y-%m-%d'), null)
+    `, [locationID, durationID, courseID, notes, date]);
+    console.log(rows);
+    return rows;
+  } catch (error) {
+    console.error('Error inserting question:', error);
+    throw error;
+  }
 }
+
