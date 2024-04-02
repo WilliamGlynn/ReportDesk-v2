@@ -7,9 +7,19 @@
     <link rel="stylesheet" href="/css/report_style.css">
 </head>
 <body>
-            <nav>
-              <a href="/pages/Reports.html">Go Back</a>
-          </nav>
+  <header>
+
+    <nav>
+    
+    <a class="navbar-brand" href="https://www.untdallas.edu"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a>
+    
+    <a class="navbuttons" href="/pages/Reports.html">Back</a>
+    
+    <a href="/" class="reportdesk">ReportDesk</a>
+    
+    </nav>
+    
+    </header>
           <section title="Graph">
             <canvas id="myChart"></canvas> 
             
@@ -40,7 +50,8 @@ function yearlyChart(questionsPerHour)
       options:
       { 
         legend: {display: false},
-        elements: {point: {radius: 6}}
+        elements: {point: {radius: 6}},
+        title: {display: true, text: "Yearly Report"},
       }
     });
     var table ="<table><tr><th>Hour</th><th>Total Traffic</th></tr>"+
