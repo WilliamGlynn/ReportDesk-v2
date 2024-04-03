@@ -17,12 +17,15 @@ nav a:hover{
     grid-template-areas: ". sec1 ."
                          ". sec2 ."
                          ". sec3 ."
-                         ". sec3 .";
+                         ". sec3 ."
+                         ". sec4 ."
+                         ". sec5 .";
     }
 .s1 {grid-area: sec1;}
 .s2 { grid-area: sec2;}
 .s3 { grid-area: sec3;}
 .s4 {grid-area: sec4;}
+.s5 {grid-area: sec4;}
 nav {
     display: flex;
     align-items: center;

@@ -82,7 +82,7 @@ export const courses_report = (async (req,res)=> {
     const result = await insertHeadcount(headcount, null)
     console.log(result)
     
-    res.send('Count Submitted Successfully <a href="/pages/headcount.html">Return to Count</a>')
+    res.render("headcount.ejs",{mymessage:" Count Submitted Successfully"})
     
   })
 
