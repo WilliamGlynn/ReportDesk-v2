@@ -1,0 +1,121 @@
+Certainly! Here's a detailed step-by-step guide on integrating session protection and authentication into your existing codebase, following the format of the tutorial you provided:
+Step 1: Import the required libraries into your index.js file
+javascript
+
+Copy code
+import express from 'express';
+import session from 'express-session';
+import passport from 'passport';
+import LocalStrategy from 'passport-local';
+Step 2: Initialize Middleware in your index.js file
+javascript
+
+Copy code
+const app = express();
+
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+Step 3: Use Passport to define the Authentication Strategy in your userControl.js file
+javascript
+
+Copy code
+import passport from 'passport';
+import LocalStrategy from 'passport-local';
+import { getUserByEmail } from '../models/database.js';
+import bcrypt from 'bcrypt';
+
+passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
+  try {
+    const user = await getUserByEmail(email);
+    if (user.length === 0) {
+      return done(null, false);
+    }
+    const isPasswordValid = await bcrypt.compare(password, user[0].password);
+    if (!isPasswordValid) {
+      return done(null, false);
+    }
+    return done(null, user[0]);
+  } catch (error) {
+    return done(error);
+  }
+}));
+Step 4: Serialize and De-Serialize authenticated users in your userControl.js file
+javascript
+
+Copy code
+passport.serializeUser((user, done) => {
+  done(null, user.userID);
+});
+
+passport.deserializeUser(async (userID, done) => {
+  try {
+    const user = await getUser(userID);
+    done(null, user);
+  } catch (error) {
+    done(error);
+  }
+});
+Step 5: Use passport.authenticate() as middleware on your login route in your userRoutes.js file
+javascript
+
+Copy code
+import express from 'express';
+import passport from 'passport';
+
+export const routerUser = express.Router();
+
+routerUser.post('/login', passport.authenticate('local', {
+  successRedirect: '/users/getRecords',
+  failureRedirect: '/',
+}));
+Step 6: Use the req.isAuthenticated() function to protect logged-in routes
+Create a middleware function in a new file named authMiddleware.js:
+javascript
+
+Copy code
+export const isAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+};
+Apply the middleware to protected routes in your userRoutes.js file:
+javascript
+
+Copy code
+import { isAuthenticated } from '../middleware/authMiddleware.js';
+
+routerUser.get('/getRecords', isAuthenticated, get_course_codes);
+routerUser.get('/create-user', isAuthenticated, (req, res) => {
+  res.render('Create_user');
+});
+routerUser.get('/manage-user', isAuthenticated, (req, res) => {
+  res.render('Manage_users');
+});
+Step 7: Use req.logout() to clear the session object
+Create a logout route in your userRoutes.js file:
+javascript
+
+Copy code
+routerUser.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+Step 8: Protect HTML files in the public folder
+8.1. Create a new folder named protected inside your public folder.
+8.2. Move the HTML files that need protection into the public/protected folder.
+8.3. Update the file paths in your EJS templates to reference the protected HTML files correctly. For example, if you have a file public/protected/headcount.html, update the file path in your EJS template to /protected/headcount.html.
+Apply the isAuthenticated middleware to the protected static files route in your index.js file:
+javascript
+
+Copy code
+app.use('/protected', isAuthenticated, express.static("public/protected"));
+These steps should help you integrate session protection and authentication into your existing codebase, following the format of the tutorial you provided. Make sure to update the file paths in your EJS templates and any other references to the protected HTML files throughout your application.
+Remember to set the SECRET environment variable in your .env file with a secure secret key.
+If you have any further questions or need more assistance, please let me know!

@@ -2,7 +2,38 @@ import { getUsers, getUser, getUserByEmail, getCoursecodes, saveResetToken, upda
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
+import passport from 'passport';
+import LocalStrategy from 'passport-local';
 
+
+passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
+  try {
+    const user = await getUserByEmail(email);
+    if (user.length === 0) {
+      return done(null, false);
+    }
+    const isPasswordValid = await bcrypt.compare(password, user[0].password);
+    if (!isPasswordValid) {
+      return done(null, false);
+    }
+    return done(null, user[0]);
+  } catch (error) {
+    return done(error);
+  }
+}));
+
+passport.serializeUser((user, done) => {
+  done(null, user.userID);
+});
+
+passport.deserializeUser(async (userID, done) => {
+  try {
+    const user = await getUser(userID);
+    done(null, user);
+  } catch (error) {
+    done(error);
+  }
+});
 
 export const user_list = (async (req,res)=> {
     const users = await getUsers()
@@ -14,27 +45,25 @@ export const user_by_id = (async (req,res)=> {
   res.send(user)
 })
 
-export const user_by_email = (async (req,res)=> {
-  const email = req.body.email
-  const password = req.body.password
-  const user = await getUserByEmail(email)
-  console.log(user)
-  if(user.length > 0)
-  {
-    const isPassWordValid = bcrypt.compareSync(password, user[0].password)
-    if (isPassWordValid == true)
-      {
-        res.redirect('/users/getRecords')
+export const user_by_email = (async (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.send("<h1>Invalid email or password</h1>");
+    }
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
       }
-    else 
-    res.send("<h1>Password not found</h1>")
-  }
-    else
-    res.send("<h1>User not found</h1>")
-})
+      return res.redirect('/users/getRecords');
+    });
+  })(req, res, next);
+});
 
 export const get_course_codes = (async (req,res)=> {
-  const courseCodes = await getCoursecodes()
+  const courseCodes = await getCoursecodes();
   res.render("Records.ejs", {courseCodes})
 })
 
