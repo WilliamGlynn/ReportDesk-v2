@@ -74,15 +74,15 @@ export const courses_report = (async (req,res)=> {
     //var formatedMysqlString = (new Date ((new Date((new Date(new Date())).toISOString() )).getTime() - ((new Date()).getTimezoneOffset()*60000))).toISOString().slice(0, 19).replace('T', ' ')
     //console.log( formatedMysqlString )
     //console.log(formatedMysqlString)
-    let x = await checkLastHeadCount();
-    console.log(Object.values(x[0]))
+    //let x = await checkLastHeadCount();
+    //console.log(Object.values(x[0]))
     const headcount = parseInt(req.body.headcount)
     console.log(headcount)
     
-    const result = await insertHeadcount(headcount, null)
+    const result = await insertHeadcount(headcount, req.user.userID)
     console.log(result)
-    
-    res.render("headcount.ejs",{mymessage:" Count Submitted Successfully"})
+    let successMessage = "Count Submitted Successfully"
+    res.render("headcount.ejs",{successMessage})
     
   })
 
@@ -111,9 +111,9 @@ export const courses_report = (async (req,res)=> {
     try {
         // Use the appropriate function
         if (dateOfQuestion) {
-            await insertQuestionYesDate(categoryID, locationID, durationID, courseID, notes, null, dateOfQuestion + ' ' + req.body.time);
+            await insertQuestionYesDate(categoryID, locationID, durationID, courseID, notes, req.user.userID, dateOfQuestion + ' ' + req.body.time);
         } else {
-            await insertQuestionNoDate(categoryID, locationID, durationID, courseID, notes, null);
+            await insertQuestionNoDate(categoryID, locationID, durationID, courseID, notes, req.user.userID);
         }
         // Redirect the user back 
         const courseCodes = await getCoursecodes()
