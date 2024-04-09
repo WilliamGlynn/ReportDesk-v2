@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Library Webpage</title>
+  <title>Manage Users</title>
   <link rel="stylesheet" href="/css/manage_user.css">
   <script>
     function showAlert(message) {
@@ -21,36 +21,28 @@
       <a href="/pages/homepage.html" class="reportdesk">ReportDesk</a>
     </nav>
   </header>
-  <section>
+  <div class="container">
     <div class="button-group">
-      <a href="/users/create-user" style="background-color: gray;">
-        <div id='5'> Create User</div>
+      <a href="/users/create-user">
+        <span>Create User</span>
       </a>
-      <a href="/users/manage-user">
-        <div id='6'> Manage Users</div>
+      <a href="/users/manage-user" class="active">
+        <span>Manage Users</span>
       </a>
     </div>
-    <form action="/users/delete-user" method="POST">
-      <div class="email-div">
-        <h1>User Email:</h1>
-        <input type="text" id="email" name="email" />
-      </div>
-      <fieldset id="userbox">
-        <div class="form-container">
-          <div class="user-info">
-            <p><b>First Name:</b> <input type="text" name="fn" /></p>
-            <p><b>Last Name:</b><input type="text" name="ln" /></p>
-            <p><b>Email:</b><input type="text" name="em" /></p>
-            <p><b>Password:</b><input type="password" name="password" /></p>
-          </div>
+    <div class="form-container">
+      <h1>Manage Users</h1>
+      <form action="/users/delete-user" method="POST">
+        <div class="form-group">
+          <label for="email">User Email:</label>
+          <input type="email" id="email" name="email" required>
         </div>
-        <div class="save-delete">
-          <div><button id='a'> Save</button></div>
-          <div><button type="submit" id='b'> Delete</button></div>
+        <div class="submit-button">
+          <button type="submit">Delete User</button>
         </div>
-      </fieldset>
-    </form>
-  </section>
+      </form>
+    </div>
+  </div>
   <footer>
     <p>University of North Texas at Dallas</p>
   </footer>

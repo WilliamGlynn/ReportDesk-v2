@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Library Webpage</title>
+  <title>Create User</title>
   <link rel="stylesheet" href="/css/create_user.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script>
     function showAlert(message) {
       alert(message);
@@ -21,30 +22,40 @@
       <a href="/Login" class="reportdesk">ReportDesk</a>
     </nav>
   </header>
-  <section>
+  <div class="container">
     <div class="button-group">
-      <a href="/users/create-user">
-        <div id='5'> Create User</div>
+      <a href="/users/create-user" class="active">
+        <span>Create User</span>
       </a>
-      <a href="/users/manage-user" style="background-color: gray;">
-        <div id='6'> Manage Users</div>
+      <a href="/users/manage-user">
+        <span>Manage Users</span>
       </a>
     </div>
-    <h1>User Information</h1>
-    <form action="/users/create-user" method="POST">
-      <fieldset id="userbox">
-        <div class="form-container">
-          <div class="user-info">
-            <p><b>First Name:</b> <input type="text" name="firstName" /></p>
-            <p><b>Last Name:</b><input type="text" name="lastName" /></p>
-            <p><b>Email:</b><input type="text" name="email" /></p>
-            <p><b>Password:</b><input type="password" name="password" /></p>
-          </div>
+    <div class="form-container">
+      <h1>Create User</h1>
+      <form action="/users/create-user" method="POST">
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required>
         </div>
-        <div style="text-align: center;"><button type="submit" id='c'> Create</button></div>
-      </fieldset>
-    </form>
-  </section>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="submit-button">
+          <button type="submit">Create User</button>
+        </div>
+      </form>
+    </div>
+  </div>
   <footer>
     <p>University of North Texas at Dallas</p>
   </footer>

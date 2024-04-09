@@ -1,12 +1,8 @@
-html {
-  width: 100%;
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-}
-
 body {
-  margin: 0px;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
 }
 
 nav {
@@ -15,6 +11,7 @@ nav {
   justify-content: space-between;
   background-color: #1051A0;
   margin: auto;
+  box-shadow: 0px 2px 5px #008000;
   margin-left: 0%;
   padding: 1.5em;
 }
@@ -42,126 +39,107 @@ nav {
   text-decoration: none;
   color: white;
   font-size: 2.5em;
+  animation: fadeInOut 8s infinite alternate;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em;
 }
 
 .button-group {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  border-width: 10%;
-}
-
-.button-group div {
-  margin: 0px;
-  border: 3px solid black;
-  text-decoration: none;
-  color: white;
-  padding: 10px;
-  font-size: 1.3em;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: bold;
+  margin-bottom: 2em;
 }
 
 .button-group a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   color: white;
-  font-size: 1.3em;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: bold;
+  background-color: #1051A0;
+  padding: 1em 2em;
+  margin: 0 1em;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.button-group a:hover,
+.button-group a.active {
   background-color: #426bba;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.button-group div:hover {
-  background-color: #426bba;
+.button-group a i {
+  margin-right: 0.5em;
+  font-size: 1.2em;
 }
 
-h1 {
-  text-align: center;
-  color: white;
-  font-size: 2.5em;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.button-group a span {
   font-weight: bold;
-  margin-bottom: 20px;
-}
-
-#userbox {
-  width: 50%;
-  margin: 20px auto; /* Adjust the margin as needed */
-  padding: 20px;
-  background-color: #073875;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .form-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.user-info p {
-  color: white;
-  font-size: 1.2em;
-}
-
-.user-info input[type="text"],
-.user-info select {
-  font-size: 20px;
-  width: 12em;
-  margin-top: 1em;
-  border: 2px solid;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #fff;
-  color: #333;
-}
-
-.user-info input[type="text"]:hover,
-.user-info select:hover {
-  background-color: rgb(186, 234, 186);
-  color: #073875;
-}
-
-.viewable-reports h3 {
-  color: white;
-  font-size: 1.5em;
-}
-
-.input-div {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-div label {
-  color: white;
-  font-size: 1.2em;
-}
-
-button {
   background-color: white;
-  color: #1051A0;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1.2em;
-  cursor: pointer;
-  margin-top: 20px;
-  border-radius: 4px;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
-  background-color: #426bba;
-  color: white;
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 1em;
 }
 
-.section-divider {
-  border: none;
-  border-top: 3px solid #073875;
-  margin: 20px 0;
+.form-group {
+  margin-bottom: 1.5em;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.form-group input {
   width: 100%;
+  padding: 0.5em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-nav a:hover{
+.submit-button {
+  text-align: center;
+}
 
+.submit-button button {
+  padding: 0.75em 2em;
+  font-size: 1em;
+  background-color: #1051A0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button button:hover {
+  background-color: #426bba;
+}
+
+footer {
+  background-color: #1051A0;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+nav a:hover {
   color: limegreen;
-  
-  }
+}
