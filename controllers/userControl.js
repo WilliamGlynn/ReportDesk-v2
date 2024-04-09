@@ -1,10 +1,9 @@
-import { getUsers, getUser, getUserByEmail, getCoursecodes, saveResetToken, updatePassword, getUserByResetToken, deleteResetToken } from '../models/database.js';
+import { getUsers, getUser, getUserByEmail, getCoursecodes, saveResetToken, updatePassword, getUserByResetToken, deleteResetToken, createUser, deleteUser } from '../models/database.js';
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-
 
 passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
   try {
@@ -29,21 +28,24 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (userID, done) => {
   try {
     const user = await getUser(userID);
+    if (!user) {
+      return done(null, false);
+    }
     done(null, user);
   } catch (error) {
     done(error);
   }
 });
 
-export const user_list = (async (req,res)=> {
-    const users = await getUsers()
-    res.send(users)
-  })
+export const user_list = (async (req, res) => {
+  const users = await getUsers();
+  res.send(users);
+});
 
-export const user_by_id = (async (req,res)=> {
-  const user = await getUser(1)
-  res.send(user)
-})
+export const user_by_id = (async (req, res) => {
+  const user = await getUser(1);
+  res.send(user);
+});
 
 export const user_by_email = (async (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
@@ -62,41 +64,39 @@ export const user_by_email = (async (req, res, next) => {
   })(req, res, next);
 });
 
-export const get_course_codes = (async (req,res)=> {
+export const get_course_codes = (async (req, res) => {
   const courseCodes = await getCoursecodes();
-  res.render("Records.ejs", {courseCodes})
-})
+  res.render("Records.ejs", { courseCodes });
+});
 
 export const reset_password = (async (req, res) => {
-  const email = req.body.email
-  const resetToken = crypto.randomBytes(20).toString('hex')
-  const hash = await bcrypt.hash(resetToken, 10)
+  const email = req.body.email;
+  const resetToken = crypto.randomBytes(20).toString('hex');
+  const hash = await bcrypt.hash(resetToken, 10);
+  await saveResetToken(email, hash);
 
-  await saveResetToken(email, hash)
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.EMAIL_PASSWORD
+    }
+  });
 
-  const transporter = nodemailer.createTransport({ //this is what will send the email
-      host: 'smtp.gmail.com', 
-      port: 465,
-      secure: true,
-      auth: {
-          user: process.env.EMAIL,
-          pass: process.env.EMAIL_PASSWORD
-      }
-  })
-
-  const mailOptions = { //this is the email that will be sent
+  const mailOptions = {
     from: process.env.EMAIL,
     to: email,
     subject: 'Password Reset Requested',
     html: `<p>Hi ${email}, you have requested a password reset</p><p>Click <a href="http://localhost:8080/users/set-new-password?token=${resetToken}&email=${email}">here</a> to reset your password</p>`
   };
 
-  await transporter.sendMail(mailOptions) //this sends the email
+  await transporter.sendMail(mailOptions);
+  res.status(200).send('Reset password link sent to your email address.');
+});
 
-  res.status(200).send('Reset password link sent to your email address.') //this take me to a page with that text
-})
-
-export const set_new_password = (async (req, res) => { 
+export const set_new_password = (async (req, res) => {
   const token = req.body.token;
   console.log('Received Token:', token);
   const email = req.body.email;
@@ -108,7 +108,6 @@ export const set_new_password = (async (req, res) => {
   try {
     const user = await getUserByResetToken(token);
     console.log('User:', user);
-
     if (user) {
       const hashedPassword = await bcrypt.hash(newPassword, 10);
       await updatePassword(email, hashedPassword);
@@ -123,3 +122,34 @@ export const set_new_password = (async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+export const create_user = async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await createUser(firstName, lastName, email, hashedPassword);
+    res.render('Create_user', { message: 'User created successfully' });
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+export const delete_user = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    await deleteUser(email);
+
+    req.logout((err) => { //log the user out
+      if (err) {
+        console.error('Error logging out user:', err);
+      }
+      res.render('Manage_users', { message: 'User deleted successfully' });
+    });
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};

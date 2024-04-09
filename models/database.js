@@ -244,3 +244,21 @@ export async function insertQuestions(locationID, durationID, courseID, notes, d
   }
 }
 
+export async function createUser(firstName, lastName, email, password) {
+  const [rows] = await pool.query(`
+    INSERT INTO Users (firstName, lastName, email, password)
+    VALUES (?, ?, ?, ?)
+  `, [firstName, lastName, email, password]);
+  console.log(rows);
+  return rows;
+}
+
+export async function deleteUser(email) {
+  const [rows] = await pool.query(`
+    DELETE FROM Users
+    WHERE email = ?
+  `, [email]);
+  console.log(rows);
+  return rows;
+}
+

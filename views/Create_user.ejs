@@ -1,89 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Library Webpage</title>
-    <link rel="stylesheet" href="/css/create_user.css">
+  <title>Library Webpage</title>
+  <link rel="stylesheet" href="/css/create_user.css">
+  <script>
+    function showAlert(message) {
+      alert(message);
+      window.location.href = '/users/create-user';
+    }
+  </script>
 </head>
-
 <body>
-    <header>
-        <nav>
-            <a class="navbar-brand" href="https://www.untdallas.edu"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a>
-            <a class="navbuttons" href="/users/getRecords">Records</a>
-            <a class="navbuttons" href="/users/create-user">Users</a>
-            <a class="navbuttons" href="/pages/headcount.html">Count</a>
-            <a class="navbuttons" href="/pages/Reports.html">Reports</a>
-            <a href="/Login" class="reportdesk">ReportDesk</a>
-        </nav>
-    </header>
-
-    <section>
-        <div class="button-group">
-            <a href="/users/create-user">
-                <div id='5'> Create User</div>
-            </a>
-            <a href="/users/manage-user" style="background-color: gray;">
-                <div id='6'> Manage Users</div>
-            </a>
+  <header>
+    <nav>
+      <a class="navbar-brand" href="https://www.untdallas.edu"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a>
+      <a class="navbuttons" href="/users/getRecords">Records</a>
+      <a class="navbuttons" href="/users/create-user">Users</a>
+      <a class="navbuttons" href="/pages/headcount.html">Count</a>
+      <a class="navbuttons" href="/pages/Reports.html">Reports</a>
+      <a href="/Login" class="reportdesk">ReportDesk</a>
+    </nav>
+  </header>
+  <section>
+    <div class="button-group">
+      <a href="/users/create-user">
+        <div id='5'> Create User</div>
+      </a>
+      <a href="/users/manage-user" style="background-color: gray;">
+        <div id='6'> Manage Users</div>
+      </a>
+    </div>
+    <h1>User Information</h1>
+    <form action="/users/create-user" method="POST">
+      <fieldset id="userbox">
+        <div class="form-container">
+          <div class="user-info">
+            <p><b>First Name:</b> <input type="text" name="firstName" /></p>
+            <p><b>Last Name:</b><input type="text" name="lastName" /></p>
+            <p><b>Email:</b><input type="text" name="email" /></p>
+            <p><b>Password:</b><input type="password" name="password" /></p>
+          </div>
         </div>
-        <h1>User Information</h1>
-        <fieldset id="userbox">
-            <div class="form-container">
-                <div class="user-info">
-                    <p><b>First Name:</b> <input type="text" name="fn" /></p>
-                    <p><b>Last Name:</b><input type="text" name="ln" /></p>
-                    <p><b>Email:</b><input type="text" name="em" /></p>
-                    <p><b>Password:</b><input type="text" name="password" /></p>
-                    <p><b>Role:</b> <select name="select">
-                            <option value="0">Select</option>
-                            <option value="1">role 1</option>
-                            <option value="2">role 2</option>
-                            <option value="3">role 3</option>
-                            <option value="4">role 4</option>
-                            <option value="5">role 5</option>
-                            <option value="6">role 6</option>
-                        </select></p>
-                </div>
-
-                <div class="viewable-reports">
-                    <h3><b>Viewable Reports:</b></h3>
-                    <div class="input-div">
-                        <div>
-                            <input type="checkbox" id="daily" name="daily" />
-                            <label for="daily">Daily</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="monthly" name="monthly" />
-                            <label for="monthly">Monthly</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="Yearly" name="Yearly" />
-                            <label for="Yearly">Yearly</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="Duration" name="Duration" />
-                            <label for="Duration">Duration</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="Course" name="Course" />
-                            <label for="Course">Course</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="Location" name="Location" />
-                            <label for="Location">Location</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                <div style="text-align: center;"><button id='c'> Create</button></div>
-        </fieldset>
-    </section>
-
-    <footer>
-        <p>University of North Texas at Dallas</p>
-      </footer>
+        <div style="text-align: center;"><button type="submit" id='c'> Create</button></div>
+      </fieldset>
+    </form>
+  </section>
+  <footer>
+    <p>University of North Texas at Dallas</p>
+  </footer>
+  <% if (typeof message !== 'undefined') { %>
+    <script>
+      showAlert('<%= message %>');
+    </script>
+  <% } %>
 </body>
-
 </html>
