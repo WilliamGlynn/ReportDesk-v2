@@ -49,4 +49,3 @@ routerUser.get('/create-user', isAuthenticated, (req, res) => {
     req.logout();
     res.redirect('/');
   });
-
