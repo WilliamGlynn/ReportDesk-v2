@@ -10,21 +10,6 @@ body {
   margin: 0px;
 
 }
-nav button a{
-  text-decoration: none;
-  color: #1051A0;
-}
-
-nav button a :hover{color: limegreen;}
-
-.logout {
-  background-color: white;
-  border-style: none;
-  padding: 6px 5px;
-  margin-bottom: 100px;
-  font-size: .75em;
-  cursor: pointer;
-}
 
 nav {
   display: flex;
