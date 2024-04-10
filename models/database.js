@@ -43,6 +43,15 @@ export async function getCoursecodes(){
     return rows
 }
 
+export async function getRoles(){
+  const [rows] = await pool.query(`
+  SELECT userRole 
+  FROM role
+  `)
+  console.log(rows)
+  return rows
+}
+
 export async function getDailyReport(day){
     console.log(day)
     const [rows] = await pool.query(`
@@ -244,11 +253,11 @@ export async function insertQuestions(locationID, durationID, courseID, notes, d
   }
 }
 
-export async function createUser(firstName, lastName, email, password) {
+export async function createUser(firstName, lastName, email, password, role) {
   const [rows] = await pool.query(`
-    INSERT INTO Users (firstName, lastName, email, password)
-    VALUES (?, ?, ?, ?)
-  `, [firstName, lastName, email, password]);
+    INSERT INTO Users (firstName, lastName, email, password,  userRoleID)
+    VALUES (?, ?, ?, ?, ?)
+  `, [firstName, lastName, email, password, role]);
   console.log(rows);
   return rows;
 }

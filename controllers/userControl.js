@@ -1,4 +1,4 @@
-import { getUsers, getUser, getUserByEmail, getCoursecodes, saveResetToken, updatePassword, getUserByResetToken, deleteResetToken, createUser, deleteUser } from '../models/database.js';
+import { getUsers, getUser, getUserByEmail, getCoursecodes, saveResetToken, updatePassword, getUserByResetToken, deleteResetToken, createUser, deleteUser, getRoles } from '../models/database.js';
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
@@ -69,6 +69,11 @@ export const get_course_codes = (async (req, res) => {
   res.render("Records.ejs", { courseCodes });
 });
 
+export const get_role_codes = (async (req, res) => {
+  const roleCodes = await getRoles();
+  res.render("Create_user.ejs", { roleCodes});
+});
+
 export const reset_password = (async (req, res) => {
   const email = req.body.email;
   const resetToken = crypto.randomBytes(20).toString('hex');
@@ -124,12 +129,13 @@ export const set_new_password = (async (req, res) => {
 });
 
 export const create_user = async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password, role } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    await createUser(firstName, lastName, email, hashedPassword);
-    res.render('Create_user', { message: 'User created successfully' });
+    await createUser(firstName, lastName, email, hashedPassword, role);
+    const roleCodes = await getRoles()
+    res.render('Create_user', { message: 'User created successfully', roleCodes});
   } catch (error) {
     console.error('Error creating user:', error);
     res.status(500).json({ message: 'Internal server error' });

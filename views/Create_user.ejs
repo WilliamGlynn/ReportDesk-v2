@@ -51,6 +51,15 @@
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" required>
         </div>
+        <select name="role" id="role" required>
+          <option value="" disabled selected>Role Codes</option>
+          
+          <%let x=1;%>
+          <% Object.entries(roleCodes).forEach(([key, value]) => {%>
+          <option value="<%= x++ %>"><%=value.userRole%></option>
+          <% }) %>
+          
+          </select>
         <div class="submit-button">
           <button type="submit">Create User</button>
         </div>

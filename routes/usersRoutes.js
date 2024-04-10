@@ -5,6 +5,7 @@ import {
   user_by_id,
   user_by_email,
   get_course_codes,
+  get_role_codes,
   reset_password,
   set_new_password,
   create_user,
@@ -47,9 +48,7 @@ routerUser.get('/password-reset-success', (req, res) => {
   res.render('password-reset/page3');
 });
 
-routerUser.get('/create-user', isAuthenticated, (req, res) => {
-  res.render('Create_user');
-});
+routerUser.get('/create-user', isAuthenticated, get_role_codes);
 
 routerUser.post('/create-user', create_user);
 
