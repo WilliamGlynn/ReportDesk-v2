@@ -1,15 +1,12 @@
-.container{
-  display: grid;
-  grid-template-rows: 500px ;
-  grid-template-columns: 50% 50%;
-  grid-column-gap:5px;
-  grid-template-areas:
-            " sec1 sec2"
-           
-         
-  }
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; 
+}
+
 .s1 {grid-area: sec1;}
-.s2 { grid-area: sec2;}
+
 .center {
   display: flex;
   flex-direction: column;
