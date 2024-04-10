@@ -146,14 +146,19 @@ export const delete_user = async (req, res) => {
   const { email } = req.body;
 
   try {
-    await deleteUser(email);
-
-    req.logout((err) => { //log the user out
-      if (err) {
-        console.error('Error logging out user:', err);
-      }
-      res.render('Manage_users', { message: 'User deleted successfully' });
-    });
+    // Check if the user being deleted is the currently logged-in user
+    if (req.user.email === email) {
+      req.logout((err) => {
+        if (err) {
+          console.error('Error logging out user:', err);
+        }
+        res.redirect('/'); //log them out
+      });
+    } else {
+      // If you deleting another user then delete
+      await deleteUser(email);
+      res.render('Manage_users', { message: 'User deleted successfully' }); //return back to manage users
+    }
   } catch (error) {
     console.error('Error deleting user:', error);
     res.status(500).json({ message: 'Internal server error' });
