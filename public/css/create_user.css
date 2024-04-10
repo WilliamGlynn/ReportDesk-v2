@@ -11,7 +11,7 @@ nav button a{
 
 nav button a :hover{color: limegreen;}
 
-nav button {
+.logout {
   background-color: white;
   border-style: none;
   padding: 6px 5px;
