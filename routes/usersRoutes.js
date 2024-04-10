@@ -59,10 +59,8 @@ routerUser.get('/manage-user', isAuthenticated, (req, res) => {
 routerUser.post('/delete-user', delete_user);
 
 routerUser.get('/logout', (req, res) => {
-  req.logout((err) => {
-    if (err) {
-      console.error('Error logging out user:', err);
-    }
-    res.redirect('/'); //log them out
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
   });
 });
