@@ -38,7 +38,7 @@ app.get('/pages/:file', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'pages', `${req.params.file}`));
 });
 
-// Serve static files from the "public" folder, excluding the "pages" folder
+
 app.use(express.static(path.join(__dirname, 'public'), {
   index: false,
   extensions: ['html'],
