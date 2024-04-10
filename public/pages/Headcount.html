@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/css/Headcount.css">
 </head>
 
-<body>
+<body class="container">
  
 <header>
   <nav class="nav">
@@ -20,15 +20,14 @@
       <a href="/pages/homepage.html" class="reportdesk">ReportDesk</a>
   </nav>
 </header>
-  <section class="container">
+
         <section class="s1 center"><h1>Head Count</h1></section>
         <section class="s2 center"><h3>Please update head count every 30 minutes</h3></section>
         <form action ="/reports/insertHeadcount" method="POST" class="s3">
         <section class="s3 center"><label> Current Headcount: <input type="number" min="0" id="headcount" name="headcount" placeholder="Head count" required style="width: 100%">
         <section class="s4 center"><input type ="submit" class="button"/></section>
         </form>
-      </section>
-
+      
 </body>
 
 </html>
