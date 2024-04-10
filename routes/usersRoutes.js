@@ -21,10 +21,7 @@ routerUser.post('/login', passport.authenticate('local', {
 }));
 
 // this is for authentication
-routerUser.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
-});
+
 
 routerUser.get('/', user_list);
 routerUser.get('/getUser', user_by_id);
@@ -59,8 +56,10 @@ routerUser.get('/manage-user', isAuthenticated, (req, res) => {
 routerUser.post('/delete-user', delete_user);
 
 routerUser.get('/logout', (req, res) => {
-  req.logout(function(err) {
-    if (err) { return next(err); }
-    res.redirect('/');
-  });
+  res.clearCookie('connect.sid');  // clear the session cookie
+	req.logout(function(err) {  // logout of passport
+		req.session.destroy(function (err) { // destroy the session
+			res.redirect('/'); // send to the client
+		});
+	});
 });
