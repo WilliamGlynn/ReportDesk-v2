@@ -3,34 +3,31 @@
 
 <head>
   <title>Library Webpage</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/Headcount.css">
 </head>
 
-<body>
+<body class="container">
  
-<header>
+<header class="nav">
   <nav>
       <a class="navbar-brand" href="https://www.untdallas.edu"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a>
       <a class="navbuttons" href="/users/getRecords">Records</a>
       <a class="navbuttons" href="/users/create-user">Users</a>
-      <a class="navbuttons" href="Headcount.html">Count</a>
-      <a class="navbuttons" href="Reports.html">Reports</a>
+      <a class="navbuttons" href="/pages/Headcount.html">Count</a>
+      <a class="navbuttons" href="/pages/Reports.html">Reports</a>
       <a class= "navbuttons"href="/users/logout">LogOut</a>
       <figure class="reportdesk">ReportDesk</figure>
-      
   </nav>
 </header>
-  <section class="container">
+
         <section class="s1 center"><h1>Head Count</h1></section>
         <section class="s2 center"><h3>Please update head count every 30 minutes</h3></section>
         <form action ="/reports/insertHeadcount" method="POST" class="s3">
-        <section class="s3 center"><label> Current Headcount: <input type="number" min="0" id="headcount" name="headcount" placeholder="Head count" required>
+        <section class="s3 center"><label> Current Headcount: <input type="number" min="0" id="headcount" name="headcount" placeholder="Head count" required style="width: 100%">
         <section class="s4 center"><input type ="submit" class="button"/></section>
         </form>
         <section class="s5 center"><p><%-(successMessage)%></p></section>
-      </section>
-
+      
 </body>
 
 </html>
