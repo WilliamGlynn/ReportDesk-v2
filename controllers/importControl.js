@@ -4,6 +4,7 @@ import { parse } from 'csv-parse';
 import xml2js from 'xml2js';
 import xlsx from 'xlsx';
 import { getLocationID, getCourseID, getDurationID, insertQuestions } from '../models/database.js';
+import { getJsDateFromExcel }  from 'excel-date-to-js';
 
 export const importData = async (req, res) => {
   const file = req.file;
@@ -100,7 +101,15 @@ function parseExcelFile(filePath) {
       duration: row[1],
       course: row[2],
       notes: row[3],
-      date: row[4],
+      date: exceldateToString(row[4]),
     }));
   return data;
+}
+
+function exceldateToString(excelDate){
+  let date=getJsDateFromExcel(excelDate);
+  date=JSON.stringify(date);
+  date =date.substring( 1, date.indexOf("T"));
+  date = date.substring(date.indexOf("-")+1,date.lastIndexOf("-"))+"/"+ date.substring(date.lastIndexOf("-")+1,date.length) +"/"+ date.substring(0,date.indexOf("-"));
+  return date;
 }
