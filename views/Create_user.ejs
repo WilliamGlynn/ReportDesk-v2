@@ -4,6 +4,7 @@
   <title>Create User</title>
   <link rel="stylesheet" href="/css/create_user.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script type="text/javascript" src="/scripts/Password Checker.js" defer></script>
   <script>
     function showAlert(message) {
       alert(message);
@@ -62,7 +63,7 @@
           
           </select>
         <div class="submit-button">
-          <button type="submit">Create User</button>
+          <button type="submit" onclick="check()" >Create User</button>
         </div>
       </form>
     </div>
@@ -75,5 +76,27 @@
       showAlert('<%= message %>');
     </script>
   <% } %>
+  
+  <script>
+    function check() {
+         let email = document.getElementById("email").value;
+         let password = document.getElementById("password").value;
+         const checker = new Check(password, email)
+         if(checker.eChecker() != true)
+         {
+          event.preventDefault() 
+          alert(checker.eChecker())
+          window.location.reload();
+         }
+
+         if(checker.pChecker() != true)
+         {
+          event.preventDefault() 
+          alert(checker.pChecker())
+          window.location.reload();
+         }
+      
+                    }
+  </script>
 </body>
 </html>

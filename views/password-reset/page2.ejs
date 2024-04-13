@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <script src="/scripts/Checkers.js"></script>
+  <script src="/scripts/Password Checker.js"></script>
   <script>
     const form = document.getElementById('passwordResetForm');
     const passwordInput = document.getElementById('newPassword');
@@ -55,7 +55,7 @@
       const check = new Check(newPassword, email);
       const result = check.pChecker();
 
-      if (result === "Password Accepted") {
+      if (result == true) {
         fetch('/users/set-new-password', {
           method: 'POST',
           headers: {

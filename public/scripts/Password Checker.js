@@ -1,14 +1,4 @@
-class User {
-    constructor(name, age, email) {
-      this.name = name;
-      this.age = age;
-      this.email = email;
-    }
-  
-  
-  
-  
-  class Check{
+class Check{
       
       constructor(password,email){
           this.password = password;
@@ -61,7 +51,7 @@ class User {
               
               else {
                   
-                  return "Password Accepted";
+                  return true;
               }
               
           
@@ -79,29 +69,13 @@ class User {
               
                if(con1.test(em))
                       {
-                          return console.log("Email Accepted")
+                          return true
                       }
                       else {
                          
-                          return console.log("Invalid Email");
+                          return "Invalid Email";
                       }
                   }
   
         
   }  
-  //var button = document.getElementById("checker")
-  //button.addEventListener("onclick", fun1())
-  
-  
-  function fun1(){
-      
-      const p = document.getElementById('password');
-      const e = document.getElementById('email');
-      const t = document.getElementById('target');
-      const t2 = document.getElementById('target2');
-  
-      const ch = new Check(p.value,e.value);
-      console.log(ch);
-      t.innerHTML = ch.pChecker(); 
-      t1.innerHTML = ch.eChecker(); 
-  }
