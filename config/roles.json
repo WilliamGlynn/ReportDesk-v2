@@ -1,0 +1,20 @@
+{
+    "roles": [
+      {
+        "name": 1,
+        "permissions": [
+          "users",
+          "reports",
+          "import",
+          "delete_record"
+        ]
+      },
+      {
+        "name": 2,
+        "permissions": [
+          "reports",
+          "import"
+        ]
+      }
+    ]
+  }

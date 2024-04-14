@@ -7,6 +7,7 @@ import session from 'express-session';
 import { isAuthenticated } from './middleware/authMiddleware.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import{checkPermission} from './middleware/rbacMiddleware.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,7 +35,7 @@ app.get('/', (req, res) => {
 });
 
 //protect html
-app.get('/pages/:file', isAuthenticated, (req, res) => {
+app.get('/pages/:file', isAuthenticated, checkPermission("reports"), (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'pages', `${req.params.file}`));
 });
 
