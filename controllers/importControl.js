@@ -3,7 +3,7 @@ import path from 'path';
 import { parse } from 'csv-parse';
 import xml2js from 'xml2js';
 import xlsx from 'xlsx';
-import { getLocationID, getCourseID, getDurationID, insertQuestions } from '../models/database.js';
+import { getLocationID, getCourseID, getDurationID, insertQuestions , getCategoryID } from '../models/database.js';
 import { getJsDateFromExcel }  from 'excel-date-to-js';
 
 export const importData = async (req, res) => {
@@ -22,16 +22,17 @@ export const importData = async (req, res) => {
   const data = await parseFile(file.path, fileExtension);
 
   for (const record of data) {
-    const { location, duration, course, notes, date } = record;
+    const { location, duration , category , course, notes, date } = record;
     const [month, day, year] = date.split('/');
     const formattedDate = `${year}-${month}-${day}`;
 
     const [locationID] = await getLocationID(location);
     const [durationID] = await getDurationID(duration);
+    const [categoryID] = await getCategoryID(category);
     const [courseID] = await getCourseID(course);
-
-    if (locationID && durationID && courseID) {
-      await insertQuestions(locationID.locationID, durationID.durationID, courseID.courseID, notes, formattedDate);
+    
+    if (locationID && durationID && courseID && categoryID) {
+      await insertQuestions(categoryID.categoryID,locationID.locationID, durationID.durationID, courseID.courseID, notes, formattedDate);
     }
   }
 
@@ -53,11 +54,11 @@ function parseCsvFile(filePath) { //
   return new Promise((resolve, reject) => {
     const data = [];
     fs.createReadStream(filePath)
-      .pipe(parse({ delimiter: ',', from_line: 3 }))
+      .pipe(parse({ delimiter: ',', from_line: 2 }))
       .on('data', (row) => {
-        if (row.length === 5) {
-          const [location, duration, course, notes, date] = row;
-          data.push({ location, duration, course, notes, date });
+        if (row.length === 6) {
+          const [location, duration, category, course, notes, date] = row;
+          data.push({ location,category, duration, course, notes, date });
         }
       })
       .on('end', () => resolve(data));
@@ -78,6 +79,7 @@ function parseXmlFile(filePath) {
               const data = entries.map((entry) => ({
                 location: entry.Location[0],
                 duration: entry.Duration[0],
+                category: entry.Category[0],
                 course: entry.Course[0],
                 notes: entry.Notes[0],
                 date: entry.Date[0],
@@ -99,9 +101,10 @@ function parseExcelFile(filePath) {
     .map((row) => ({
       location: row[0],
       duration: row[1],
-      course: row[2],
-      notes: row[3],
-      date: exceldateToString(row[4]),
+      category: row[2],
+      course: row[3],
+      notes: row[4],
+      date: exceldateToString(row[5]),
     }));
   return data;
 }
