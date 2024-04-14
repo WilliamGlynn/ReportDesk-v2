@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <row>
+    <Location>In Person</Location>
+    <Duration>30</Duration>
+    <Category>Technology</Category>
+    <Course>CJUS 2600</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>12/17/2023</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>30</Duration>
+    <Category>Scanner</Category>
+    <Course>CHEM 3452</Course>
+    <Notes></Notes>
+    <Date>12/18/2023</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>Directions</Category>
+    <Course>SPAN 4321</Course>
+    <Notes></Notes>
+    <Date>12/19/2023</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>5</Duration>
+    <Category>Technology</Category>
+    <Course>BCIS 3610</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>12/20/2023</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>29</Duration>
+    <Category>Directions</Category>
+    <Course>CJUS 4390</Course>
+    <Notes></Notes>
+    <Date>12/21/2023</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>30</Duration>
+    <Category>Scanner</Category>
+    <Course>SPAN 4340</Course>
+    <Notes></Notes>
+    <Date>12/22/2023</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>30</Duration>
+    <Category>Directions</Category>
+    <Course>AGRI 4390</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>12/23/2023</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>30</Duration>
+    <Category>Directions</Category>
+    <Course>PSYC 4620</Course>
+    <Notes></Notes>
+    <Date>12/24/2023</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>30</Duration>
+    <Category>Scanner</Category>
+    <Course>BIOL 3312</Course>
+    <Notes></Notes>
+    <Date>12/25/2023</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>29</Duration>
+    <Category>Technology</Category>
+    <Course>CJUS 4330</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>12/26/2023</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>30</Duration>
+    <Category>General</Category>
+    <Course>HMGT 4150</Course>
+    <Notes></Notes>
+    <Date>12/27/2023</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>5</Duration>
+    <Category>Directions</Category>
+    <Course>CJUS 4700</Course>
+    <Notes></Notes>
+    <Date>12/28/2023</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>5</Duration>
+    <Category>Scanner</Category>
+    <Course>HMGT 3312</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>12/29/2023</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>Scanner</Category>
+    <Course>PSYC 3330</Course>
+    <Notes></Notes>
+    <Date>12/30/2023</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>5</Duration>
+    <Category>Technology</Category>
+    <Course>ENGL 1323</Course>
+    <Notes></Notes>
+    <Date>12/31/2023</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>29</Duration>
+    <Category>Technology</Category>
+    <Course>PSYC 4910</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>1/1/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>Scanner</Category>
+    <Course>CJUS 3350</Course>
+    <Notes></Notes>
+    <Date>1/2/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>Scanner</Category>
+    <Course>COMM 4355</Course>
+    <Notes></Notes>
+    <Date>1/3/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>30</Duration>
+    <Category>Scanner</Category>
+    <Course>COMM 2314</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>1/4/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>29</Duration>
+    <Category>General</Category>
+    <Course>EDSP 3240</Course>
+    <Notes></Notes>
+    <Date>1/5/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>30</Duration>
+    <Category>Directions</Category>
+    <Course>EDEC 4243</Course>
+    <Notes></Notes>
+    <Date>1/6/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>5</Duration>
+    <Category>Directions</Category>
+    <Course>PSYC 4670</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>1/7/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>General</Category>
+    <Course>AGRI 3304</Course>
+    <Notes></Notes>
+    <Date>1/8/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>5</Duration>
+    <Category>Scanner</Category>
+    <Course>PSYC 3996</Course>
+    <Notes></Notes>
+    <Date>1/9/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>29</Duration>
+    <Category>Directions</Category>
+    <Course>PSCI 4520</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>1/10/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>29</Duration>
+    <Category>Directions</Category>
+    <Course>SPAN 4311</Course>
+    <Notes></Notes>
+    <Date>1/11/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>5</Duration>
+    <Category>Scanner</Category>
+    <Course>HIST 4180</Course>
+    <Notes></Notes>
+    <Date>1/12/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>5</Duration>
+    <Category>Directions</Category>
+    <Course>PSYC 4355</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>1/13/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>5</Duration>
+    <Category>Scanner</Category>
+    <Course>BUSI 4900</Course>
+    <Notes></Notes>
+    <Date>1/14/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>29</Duration>
+    <Category>General</Category>
+    <Course>SPAN 4390</Course>
+    <Notes></Notes>
+    <Date>1/15/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>5</Duration>
+    <Category>General</Category>
+    <Course>PSCI 4210</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>1/16/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>General</Category>
+    <Course>EMSA 3342</Course>
+    <Notes></Notes>
+    <Date>1/17/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>30</Duration>
+    <Category>Directions</Category>
+    <Course>SPAN 3570</Course>
+    <Notes></Notes>
+    <Date>1/18/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>Technology</Category>
+    <Course>HSML 4700</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>1/19/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>30</Duration>
+    <Category>Directions</Category>
+    <Course>MGMT 4345</Course>
+    <Notes></Notes>
+    <Date>1/20/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>30</Duration>
+    <Category>Technology</Category>
+    <Course>PBHL 4900</Course>
+    <Notes></Notes>
+    <Date>1/21/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>30</Duration>
+    <Category>Directions</Category>
+    <Course>SOCI 3630</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>1/22/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>5</Duration>
+    <Category>Technology</Category>
+    <Course>PSCI 4310</Course>
+    <Notes></Notes>
+    <Date>1/23/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>29</Duration>
+    <Category>Scanner</Category>
+    <Course>SOCI 3340</Course>
+    <Notes></Notes>
+    <Date>1/24/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>30</Duration>
+    <Category>Technology</Category>
+    <Course>MATH 2391</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>1/25/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>30</Duration>
+    <Category>Directions</Category>
+    <Course>HMGT 4120</Course>
+    <Notes></Notes>
+    <Date>1/26/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>29</Duration>
+    <Category>General</Category>
+    <Course>ENGL 1313</Course>
+    <Notes></Notes>
+    <Date>1/27/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>30</Duration>
+    <Category>Scanner</Category>
+    <Course>EMSA 3346</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>1/28/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>Scanner</Category>
+    <Course>PSCI 3110</Course>
+    <Notes></Notes>
+    <Date>1/29/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>5</Duration>
+    <Category>Scanner</Category>
+    <Course>SPAN 4383</Course>
+    <Notes></Notes>
+    <Date>1/30/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>General</Category>
+    <Course>BIOL 2302</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>1/31/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>30</Duration>
+    <Category>Scanner</Category>
+    <Course>SPAN 1020</Course>
+    <Notes></Notes>
+    <Date>2/1/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>30</Duration>
+    <Category>General</Category>
+    <Course>ACCT 2010</Course>
+    <Notes></Notes>
+    <Date>2/2/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>29</Duration>
+    <Category>General</Category>
+    <Course>CSCE 3420</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>2/3/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>30</Duration>
+    <Category>Scanner</Category>
+    <Course>PSCI 1050</Course>
+    <Notes></Notes>
+    <Date>2/4/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>30</Duration>
+    <Category>General</Category>
+    <Course>COMM 3311</Course>
+    <Notes></Notes>
+    <Date>2/5/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>29</Duration>
+    <Category>General</Category>
+    <Course>CDFS 3305</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>2/6/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>29</Duration>
+    <Category>Directions</Category>
+    <Course>HIST 4320</Course>
+    <Notes></Notes>
+    <Date>2/7/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>General</Category>
+    <Course>PHYS 1440</Course>
+    <Notes></Notes>
+    <Date>2/8/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>Scanner</Category>
+    <Course>SPAN 3304</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>2/9/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>29</Duration>
+    <Category>Technology</Category>
+    <Course>LSCM 4360</Course>
+    <Notes></Notes>
+    <Date>2/10/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>29</Duration>
+    <Category>Scanner</Category>
+    <Course>SOCI 4900</Course>
+    <Notes></Notes>
+    <Date>2/11/2024</Date>
+  </row>
+  <row>
+    <Location>In Person</Location>
+    <Duration>29</Duration>
+    <Category>Technology</Category>
+    <Course>HIST 2900</Course>
+    <Notes>helped a person with a question, and found on-line resource</Notes>
+    <Date>2/12/2024</Date>
+  </row>
+  <row>
+    <Location>Online</Location>
+    <Duration>29</Duration>
+    <Category>Scanner</Category>
+    <Course>SPAN 2040</Course>
+    <Notes></Notes>
+    <Date>2/13/2024</Date>
+  </row>
+  <row>
+    <Location>Phone</Location>
+    <Duration>5</Duration>
+    <Category>Directions</Category>
+    <Course>CJUS 3330</Course>
+    <Notes></Notes>
+    <Date>2/14/2024</Date>
+  </row>
+</root>

@@ -227,6 +227,12 @@ export async function getLocationID(location){
     return rows
 }
 
+export async function getCategoryID(category){
+  const [rows] = await pool.query('Select categoryID from categories where categoryType = ?', [category]);
+  console.log(rows)
+  return rows
+}
+
 export async function getCourseID(course){
     const [rows] = await pool.query('Select courseID from courses WHERE coursecode = ?',[course]);
     console.log(rows)
@@ -239,12 +245,12 @@ export async function getDurationID(duration) {
   return rows;
 }
 
-export async function insertQuestions(locationID, durationID, courseID, notes, date) {
+export async function insertQuestions( categoryID ,locationID, durationID, courseID, notes, date) {
   try {
     const [rows] = await pool.query(`
       INSERT INTO Questions (categoryID, locationID, durationID, courseID, notes, dateOfQuestion, userID)
-      VALUES (null, ?, ?, ?, ?, ?, null)
-    `, [locationID, durationID, courseID, notes, date]);
+      VALUES (?, ?, ?, ?, ?, ?, null)
+    `, [categoryID,locationID, durationID, courseID, notes, date]);
     console.log(rows);
     return rows;
   } catch (error) {
