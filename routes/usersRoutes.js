@@ -12,6 +12,10 @@ import {
   delete_user,
 } from '../controllers/userControl.js';
 import { isAuthenticated } from '../middleware/authMiddleware.js';
+import{checkPermission} from '../middleware/rbacMiddleware.js';
+
+
+
 
 export const routerUser = express.Router();
 
@@ -45,11 +49,11 @@ routerUser.get('/password-reset-success', (req, res) => {
   res.render('password-reset/page3');
 });
 
-routerUser.get('/create-user', isAuthenticated, get_role_codes);
+routerUser.get('/create-user', isAuthenticated, checkPermission("users"), get_role_codes);
 
 routerUser.post('/create-user', create_user);
 
-routerUser.get('/manage-user', isAuthenticated, (req, res) => {
+routerUser.get('/manage-user', isAuthenticated, checkPermission("users"), (req, res) => {
   res.render('Manage_users');
 });
 
