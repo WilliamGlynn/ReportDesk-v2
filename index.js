@@ -35,9 +35,13 @@ app.get('/', (req, res) => {
 });
 
 //protect html
-app.get('/pages/:file', isAuthenticated, checkPermission("reports"), (req, res) => {
+app.get('/pages/:file', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'pages', `${req.params.file}`));
 });
+
+
+
+
 
 
 app.use(express.static(path.join(__dirname, 'public'), {

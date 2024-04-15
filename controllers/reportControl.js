@@ -1,6 +1,8 @@
 import { getDailyReport, getMonthlyReport, getYearlyReport, getLocationReport, getDurationReport, getCoursesReport, insertQuestionNoDate, insertQuestionYesDate, insertHeadcount, checkLastHeadCount,  getCoursecodes} from '../models/database.js';
 
-
+export const report_page = (async (req,res)=> {
+  res.render("Reports.ejs")
+})
 
 export const daily_report = (async (req,res)=> {
     const userdate = req.query.date
