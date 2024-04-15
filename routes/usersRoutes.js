@@ -1,8 +1,6 @@
 import express from 'express';
 import passport from 'passport';
 import {
-  user_list,
-  user_by_id,
   user_by_email,
   get_course_codes,
   get_role_codes,
@@ -27,8 +25,7 @@ routerUser.post('/login', passport.authenticate('local', {
 // this is for authentication
 
 
-routerUser.get('/', user_list);
-routerUser.get('/getUser', user_by_id);
+
 routerUser.post('/login', user_by_email);
 routerUser.get('/getRecords', isAuthenticated, get_course_codes);
 routerUser.post('/password-reset', reset_password);

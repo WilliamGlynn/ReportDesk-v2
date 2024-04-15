@@ -1,4 +1,4 @@
-import {getUserByEmail, getCoursecodes, saveResetToken, updatePassword, getUserByResetToken, deleteResetToken, createUser, deleteUser, getRoles } from '../models/database.js';
+import {getUser, getUserByEmail, getCoursecodes, saveResetToken, updatePassword, getUserByResetToken, deleteResetToken, createUser, deleteUser, getRoles } from '../models/database.js';
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
@@ -37,15 +37,9 @@ passport.deserializeUser(async (userID, done) => {
   }
 });
 
-export const user_list = (async (req, res) => {
-  const users = await getUsers();
-  res.send(users);
-});
 
-export const user_by_id = (async (req, res) => {
-  const user = await getUser(1);
-  res.send(user);
-});
+
+
 
 export const user_by_email = (async (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
