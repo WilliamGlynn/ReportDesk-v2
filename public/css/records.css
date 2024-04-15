@@ -1,14 +1,18 @@
 html {
-  width: 100%;
-  /* background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url(/images/jaghead.png); */
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0px;
 
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 nav {
@@ -19,7 +23,7 @@ nav {
   margin: auto;
   box-shadow: 0px 2px 5px #008000;
   margin-left: 0%;
-  padding: 1.5em;
+  padding: 3em;
 
 }
 
@@ -51,6 +55,7 @@ nav {
 }
 
 @keyframes fadeInOut {
+
   0%,
   100% {
     opacity: 1;
@@ -78,38 +83,33 @@ nav {
 
 .questionhead {
   font-size: 2.5em;
-  text-align: center;
   color: white;
-
-
+  position: absolute;
+  top: 10%;
+  left: 480px;
 
 }
 
 .formdiv {
-  border-style: solid;
-  height: 30em;
+  position: relative;
+  top: 20px;
+  display: grid;
+  grid-column-gap: 5px;
+  grid-template-rows: 30em;
   width: 70em;
-  margin: auto;
-  /* This center the div   */
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "a b";
+  border-style: solid;
+  margin: 0 auto;
+
   background-color: #073875;
   border-radius: 1.5em;
   border-color: rgb(21, 21, 129);
 }
 
-.leftside div select {
+.a div select,
+.b div select {
 
-  font-size: 20px;
-  width: 10em;
-  margin-top: 1em;
-  border: 2px solid;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #fff;
-  color: #333;
-
-}
-
-.rightside div select {
   font-size: 20px;
   width: 12em;
   margin-top: 1em;
@@ -121,24 +121,23 @@ nav {
 
 }
 
-
-.rightside textarea {
-  width: 97%;
-  height: 120px;
+.b textarea {
+  width: 21.8em;
+  height: 190px;
   border: 2px solid;
   margin-top: 2em;
 }
 
-.leftside div select:hover,
-.rightside div select:hover,
-.rightside div textarea:hover {
+.a div select:hover,
+.b div select:hover,
+.b div textarea:hover {
   background-color: rgb(186, 234, 186);
   color: #073875;
 }
 
-.leftside div input {
+.a div input {
   font-size: 14px;
-  width: 13.9em;
+  width: 17.1em;
   margin-top: 1.5em;
   border: 2px solid;
   border-radius: 4px;
@@ -146,25 +145,37 @@ nav {
 }
 
 
-.leftside {
-  position: absolute;
-  left: 30%;
+.a {
+  grid-area: a;
+  border-color: white;
 }
 
-.rightside {
-  position: absolute;
-  right: 30%;
+.b {
+  grid-area: b;
+  border-color: white;
+}
+
+.a,
+.b {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .submit input {
   text-align: center;
   width: 100px;
   height: 40px;
-  margin-top: 250px;
-  margin-left: 500px;
   border-radius: 4px;
   background-color: white;
   font-size: 15px;
+  position: absolute;
+  bottom: 30px;
+  left: 500px;
+
+
 
 }
 
@@ -185,20 +196,17 @@ footer p {
 
 figure {
   max-width: 150px;
-  /* Set the maximum width as needed */
   margin: 0 auto;
-  /* Center the figure horizontally (optional) */
+
 }
 
 img {
   width: 100%;
-  /* Make the image fill the width of the figure */
-
 
 }
 
-nav a:hover{
+nav a:hover {
 
   color: limegreen;
-  
-  }
+
+}

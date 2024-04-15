@@ -14,13 +14,13 @@
 
     <nav>
 
-    <a class="navbar-brand" href="https://www.untdallas.edu"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a>
-    <a class="navbuttons" href="/users/getRecords">Records</a>
-    <a class="navbuttons" href="/users/create-user">Users</a>
-    <a class="navbuttons" href="/pages/headcount.html">Count</a>
-    <a class="navbuttons" href="/reports/getReportpage">Reports</a>
-    <a class= "navbuttons"href="/users/logout">LogOut</a>
-    <p class="reportdesk">ReportDesk</p>
+      <a class="navbar-brand" href="https://www.untdallas.edu"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a>
+      <a class="navbuttons" href="/users/getRecords">Records</a>
+      <a class="navbuttons" href="/users/create-user">Users</a>
+      <a class="navbuttons" href="/pages/headcount.html">Count</a>
+      <a class="navbuttons" href="/reports/getReportpage">Reports</a>
+      <a class="navbuttons" href="/users/logout">LogOut</a>
+      <p class="reportdesk">ReportDesk</p>
     </nav>
 
 
@@ -30,81 +30,83 @@
   <h1 class="recordsheader">Records</h1>
 
 
-<div class="formdiv">
+  <form class="formdiv" action="/reports/insert-question" method="POST">
 
-  <form action="/reports/insert-question" method="POST">   
-    <div>
-      <h2 class="questionhead">Question</h2>
-    </div>
 
-    <div class="leftside">
+    <h2 class="questionhead">Question</h2>
+
+
+
+    <div class="a">
 
       <div class="cat">
 
-    <select name="categorydrop" id="categorydrop" required>
-      <option value="" disabled selected>Category</option>
-      <option value="1">General</option>
-      <option value="2">Directions</option>
-      <option value="3">Scanner</option>
-      <option value="4">Technology</option>
-    </select>
+        <select name="categorydrop" id="categorydrop" required>
+          <option value="" disabled selected>Category</option>
+          <option value="1">General</option>
+          <option value="2">Directions</option>
+          <option value="3">Scanner</option>
+          <option value="4">Technology</option>
+        </select>
 
       </div>
 
       <div clas="loc">
-    <select name="locationdrop" id="locationdrop" required>
-      <option value="" disabled selected>Location</option>
-      <option value="1">In Person</option>
-      <option value="2">Phone</option>
-      <option value="3">Online</option>
-    </select>
+        <select name="locationdrop" id="locationdrop" required>
+          <option value="" disabled selected>Location</option>
+          <option value="1">In Person</option>
+          <option value="2">Phone</option>
+          <option value="3">Online</option>
+        </select>
+
+      </div>
+
+      <div>
+        <input type="date" name="date" />
+      </div>
+
+      <div class="time">
+        <input type="time" name="time" />
+      </div>
+
+
+
+      <div class="dur">
+        <select name="durationdrop" id="durationdrop" required>
+          <option value="" disabled selected>Duration</option>
+          <option value="1">Less than 5 minutes</option>
+          <option value="2">Between 5 to 30 minutes</option>
+          <option value="3">More than 30 minutes</option>
+        </select>
+
+      </div>
 
     </div>
-    
-    <div>
-      <input type="date" name="date" />
-    </div>
-  
-    <div class="time">
-      <input type="time" name="time" />
-    </div>
 
-  
-
-  <div class = "dur">
-    <select name="durationdrop" id="durationdrop" required>
-      <option value="" disabled selected>Duration</option>
-      <option value="1">Less than 5 minutes</option>
-      <option value="2">Between 5 to 30 minutes</option>
-      <option value="3">More than 30 minutes</option>
-    </select>
-
-    </div>
-
-    </div>
-
-    <div class="rightside">
+    <div class="b">
 
       <div class="cour">
-      <select name="coursecodedrop" id="coursecodedrop">
-      <option value="" disabled selected>Course Code(Optional)</option>
-      
-      <%let x=1;%>
-      <% Object.entries(courseCodes).forEach(([key, value]) => {%>
-      <option value="<%= x++ %>"><%=value.courseCode%></option>
-      <% }) %>
-      
-      </select>
+        <select name="coursecodedrop" id="coursecodedrop">
+          <option value="" disabled selected>Course Code(Optional)</option>
 
-    </div>
+          <%let x=1;%>
+            <% Object.entries(courseCodes).forEach(([key, value])=> {%>
+              <option value="<%= x++ %>">
+                <%=value.courseCode%>
+              </option>
+              <% }) %>
 
-    <div class="note">
-    <textarea placeholder="Notes" name="notestext" id="notestext" maxlength="1000"></textarea>
+        </select>
 
-    
-    </div> 
+      </div>
 
-   
+      <div class="note">
+        <textarea placeholder="Notes" name="notestext" id="notestext" maxlength="1000"></textarea>
+
+
+      </div>
+
+
     </div>
 
     <div class="submit">
@@ -112,18 +114,19 @@
     </div>
 
 
+
+
   </form>
 
-</div>
 
-<figure>
-  <img src="/images/jaghead.png" alt="jaguar"/>
-  
+  <figure>
+    <img src="/images/jaghead.png" alt="jaguar" />
+
   </figure>
 
-<footer>
-  <p>University of North Texas at Dallas</p>
-</footer>
+  <footer>
+    <p>University of North Texas at Dallas</p>
+  </footer>
 
 </body>
 

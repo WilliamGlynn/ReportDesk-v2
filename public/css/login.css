@@ -1,37 +1,147 @@
-#Loginbox{
+#Loginbox {
 
-  text-align: center;
-  width: 50%;
+
+  margin-top: 10%;
+  width: 45%;
   margin-left: 25%;
-  
-}
-label{
-    font-size: 50px;
+  color: #426bba;
+
 }
 
-#Logintext{
-  background-color: rgba(255,255,255,0.5);
-  
+label {
+  font-size: 50px;
 }
 
-#loginbox{
-  background-color: rgba(255,255,255,0.5);
-  
+h2 #Logintext {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  margin-left: 0px;
+
+
 }
 
-h2{
+#loginbox {
+
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+
+
+}
+
+#emailtext,
+#passwordtext {
+  font-size: 45px;
+}
+
+
+h2 {
   font-size: 65px;
 }
 
-header{
+header {
   display: flex;
   justify-content: space-between;
 }
 
-html{
-    width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%), url(/images/jaghead.png);
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
+html {
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(/images/jaghead.png);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+
+}
+
+
+
+.email-div,
+.password-div {
+
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #426bba;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 400px;
+  height: 100px;
+  background-color: white;
+
+
+}
+
+.reportdesk {
+  text-decoration: none;
+  color: white;
+  font-size: 3.2em;
+
+  margin-top: 1px;
+}
+
+
+
+#loginbutton {
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #426bba;
+  font-size: 15px;
+  color: white;
+  margin-top: 20px;
+  bottom: 30px;
+  left: 500px;
+}
+
+#loginbutton:hover {
+  cursor: pointer;
+  background-color: #1e69ff;
+}
+
+input {
+
+  width: 21.8em;
+  height: 190px;
+  border: 2px solid;
+  border-radius: 4px;
+  margin-top: 1em;
+  margin-bottom: .5em;
+  border-color: gray;
+
+}
+
+a {
+  text-decoration: none;
+  color: #2753ab;
+}
+
+
+html {
+  color: white;
+
+  animation: fadeInOut 14s infinite alternate;
+  margin-top: 1px;
+  background-color: lightyellow;
+}
+
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 1;
+    background-color: rgba(13, 91, 163, 0.5);
+  }
+
+  50% {
+    opacity: 1;
+    background-color: rgb(120, 198, 120);
+  }
 }
