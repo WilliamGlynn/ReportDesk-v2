@@ -119,7 +119,7 @@ export const courses_report = (async (req,res)=> {
         }
         // Redirect the user back 
         const courseCodes = await getCoursecodes()
-        res.render("Records.ejs", {courseCodes})
+        res.render("Records.ejs", {courseCodes, message: 'Question Inserted Successfully' })
     } catch (error) {
         
         console.error('Error inserting question:', error);

@@ -11,5 +11,5 @@ routerReport.get('/getYearly', isAuthenticated,checkPermission("reports"), yearl
 routerReport.get('/getLocation', isAuthenticated,checkPermission("reports"),  location_report)
 routerReport.get('/getDuration', isAuthenticated,checkPermission("reports"),  duration_report)
 routerReport.get('/getCourses', isAuthenticated,checkPermission("reports"),  courses_report)
-routerReport.post('/insertHeadcount', isAuthenticated,checkPermission("reports"),  head_count)
-routerReport.post('/insert-question', isAuthenticated,checkPermission("reports"),  insert_question);
+routerReport.post('/insertHeadcount', isAuthenticated, head_count)
+routerReport.post('/insert-question', isAuthenticated, insert_question);

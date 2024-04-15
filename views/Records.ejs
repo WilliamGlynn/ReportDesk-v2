@@ -5,6 +5,11 @@
   <title>Records</title>
   <link rel="stylesheet" type="text/css" href="/css/records.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function showAlert(message) {
+      alert(message);
+    }
+  </script>
 </head>
 
 <body>
@@ -127,6 +132,12 @@
   <footer>
     <p>University of North Texas at Dallas</p>
   </footer>
+
+  <% if (typeof message !== 'undefined') { %>
+    <script>
+      showAlert('<%= message %>');
+    </script>
+  <% } %>
 
 </body>
 
