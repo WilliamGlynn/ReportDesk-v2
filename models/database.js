@@ -9,20 +9,6 @@ const pool = mysql.createPool({
     database: process.env.DB_NAME
 }).promise()
 
-export async function getUsers() {
-const [rows] = await pool.query("SELECT * FROM Users")
-return rows
-}
-
-
-export async function getUser(id) {
-    const [rows] = await pool.query(`
-    SELECT * 
-    FROM users 
-    WHERE userID = ?
-    `,[id])
-    return rows[0]
-}
 
 export async function getUserByEmail(email) {
     const [rows] = await pool.query(`

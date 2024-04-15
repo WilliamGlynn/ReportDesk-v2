@@ -1,4 +1,4 @@
-import { getUsers, getUser, getUserByEmail, getCoursecodes, saveResetToken, updatePassword, getUserByResetToken, deleteResetToken, createUser, deleteUser, getRoles } from '../models/database.js';
+import {getUserByEmail, getCoursecodes, saveResetToken, updatePassword, getUserByResetToken, deleteResetToken, createUser, deleteUser, getRoles } from '../models/database.js';
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';

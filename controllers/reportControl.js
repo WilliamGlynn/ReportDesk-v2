@@ -73,11 +73,6 @@ export const courses_report = (async (req,res)=> {
 
 
   export const head_count = (async (req,res)=> {
-    //var formatedMysqlString = (new Date ((new Date((new Date(new Date())).toISOString() )).getTime() - ((new Date()).getTimezoneOffset()*60000))).toISOString().slice(0, 19).replace('T', ' ')
-    //console.log( formatedMysqlString )
-    //console.log(formatedMysqlString)
-    //let x = await checkLastHeadCount();
-    //console.log(Object.values(x[0]))
     const headcount = parseInt(req.body.headcount)
     console.log(headcount)
     
