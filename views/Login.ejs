@@ -13,23 +13,29 @@
     <header>
         <div><a class="navbar-brand" href="#"><img src="/images/UNTDlogo.png" alt="UNTDlogo"></a></div>
         <div>
-            <h1>ReportDesk</h1>
+            <h1 class="reportdesk">ReportDesk</h1>
         </div>
     </header>
 
     <main id="Loginbox">
-        <h2 id="Logintext">Login</h2>
+        
         <fieldset id="loginbox">
+            <h2 id="Logintext">Login</h2>
+
             <form action="/users/login" method="POST">
+
                 <div class="email-div">
                     <label id="emailtext" for="email">Email:</label>
                     <input type="text" id="email" name="email">
                 </div>
+
                 <br>
+
                 <div class="password-div">
                     <label id="passwordtext" for="password">Password:</label>
                     <input type="password" id="password" name="password">
                 </div>
+
                 <button id="loginbutton" type="submit">Login</button>
                 <p id="target"></p>
 
