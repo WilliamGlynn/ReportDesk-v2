@@ -31,7 +31,7 @@ export async function getUserByEmail(email) {
 export async function getCoursecodes(){
     const [rows] = await pool.query(`
     SELECT courseCode 
-    FROM Courses
+    FROM courses
     `)
     console.log(rows)
     return rows
@@ -118,11 +118,11 @@ export async function getDurationReport(year){
 
 export async function getCoursesReport(year){
     const [rows] = await pool.query(`
-    SELECT Courses.courseCode, COUNT(*) AS numberOfQuestions
+    SELECT courses.courseCode, COUNT(*) AS numberOfQuestions
     FROM Questions
-    INNER JOIN Courses ON Questions.courseID=Courses.courseID
-    WHERE EXTRACT(year from Questions.dateOfQuestion)=?
-    GROUP BY  Questions.courseID
+    INNER JOIN courses ON questions.courseID=Courses.courseID
+    WHERE EXTRACT(year from questions.dateOfQuestion)=?
+    GROUP BY  questions.courseID
     ORDER BY numberOfQuestions DESC
     LIMIT 5;
     `, [year])
@@ -164,7 +164,7 @@ export async function saveResetToken(email, token) {
 
 export async function updatePassword(email, hashedPassword) {
     const [result] = await pool.query(`
-      UPDATE Users 
+      UPDATE users 
       SET password = ?
       WHERE email = ?
     `, [hashedPassword, email]);
@@ -242,7 +242,7 @@ export async function getDurationID(duration) {
 export async function insertQuestions( categoryID ,locationID, durationID, courseID, notes, date) {
   try {
     const [rows] = await pool.query(`
-      INSERT INTO Questions (categoryID, locationID, durationID, courseID, notes, dateOfQuestion, userID)
+      INSERT INTO questions (categoryID, locationID, durationID, courseID, notes, dateOfQuestion, userID)
       VALUES (?, ?, ?, ?, ?, ?, null)
     `, [categoryID,locationID, durationID, courseID, notes, date]);
     console.log(rows);
@@ -255,7 +255,7 @@ export async function insertQuestions( categoryID ,locationID, durationID, cours
 
 export async function createUser(firstName, lastName, email, password, role) {
   const [rows] = await pool.query(`
-    INSERT INTO Users (firstName, lastName, email, password,  userRoleID)
+    INSERT INTO users (firstName, lastName, email, password,  userRoleID)
     VALUES (?, ?, ?, ?, ?)
   `, [firstName, lastName, email, password, role]);
   console.log(rows);
@@ -264,7 +264,7 @@ export async function createUser(firstName, lastName, email, password, role) {
 
 export async function deleteUser(email) {
   const [rows] = await pool.query(`
-    DELETE FROM Users
+    DELETE FROM users
     WHERE email = ?
   `, [email]);
   console.log(rows);
