@@ -26,9 +26,15 @@
         <section class="s3 center"><label> Current Headcount: <input type="number" min="0" id="headcount" name="headcount" placeholder="Head count" required style="width: 100%">
         <section class="s4 center"><input type ="submit" class="button"/></section>
         </form>
-        <section class="s5 center"><p><%-(successMessage)%></p></section>
+        <section id="return" class="s5 center"></section>
       
 </body>
+
+<% if (typeof successMessage !== 'undefined') { %>
+  <script>
+    document.getElementById("return").innerHTML = "<p><%-(successMessage)%></p>";
+  </script>
+<% } %>
 
 </html>
 

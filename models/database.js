@@ -181,7 +181,7 @@ export async function updatePassword(email, hashedPassword) {
 export async function insertQuestionNoDate(categoryID, locationID, durationID, courseID, notes, userID){
     const [rows] = await pool.query(`
     INSERT 
-    INTO Questions (categoryID, locationID, durationID, courseID, notes, userID)
+    INTO questions (categoryID, locationID, durationID, courseID, notes, userID)
     VALUES(?,?,?,?,?,?);
     `, [categoryID, locationID, durationID, courseID, notes, userID])
     console.log(rows);

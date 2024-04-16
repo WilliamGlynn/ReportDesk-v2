@@ -9,14 +9,14 @@ import { getJsDateFromExcel }  from 'excel-date-to-js';
 export const importData = async (req, res) => {
   const file = req.file;
   if (!file) {
-    return res.render('import', { error: 'No file was uploaded.' });
+    return res.render("Import.ejs", { error: 'No file was uploaded.' });
   }
 
   const supportedFormats = ['.csv', '.xml', '.xlsx'];
   const fileExtension = path.extname(file.originalname).toLowerCase();
   if (!supportedFormats.includes(fileExtension)) {
     fs.unlinkSync(file.path);
-    return res.render('import', { error: 'Unsupported file format. Please upload a CSV, XML, or Excel file.' });
+    return res.render("Import.ejs", { error: 'Unsupported file format. Please upload a CSV, XML, or Excel file.' });
   }
 
   const data = await parseFile(file.path, fileExtension);
@@ -37,7 +37,7 @@ export const importData = async (req, res) => {
   }
 
   fs.unlinkSync(file.path);
-  res.render('import', { message: 'Data imported successfully.' });
+  res.render("Import.ejs", { message: 'Data imported successfully.' });
 };
 
 async function parseFile(filePath, fileExtension) {
