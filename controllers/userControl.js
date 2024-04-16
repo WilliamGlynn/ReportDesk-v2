@@ -88,7 +88,7 @@ export const reset_password = (async (req, res) => {
     from: process.env.EMAIL,
     to: email,
     subject: 'Password Reset Requested',
-    html: `<p>Hi ${email}, you have requested a password reset</p><p>Click <a href="http://localhost:8080/users/set-new-password?token=${resetToken}&email=${email}">here</a> to reset your password</p>`
+    html: `<p>Hi ${email}, you have requested a password reset</p><p>Click <a href="https://reportdesk-v2.onrender.com/users/set-new-password?token=${resetToken}&email=${email}">here</a> to reset your password</p>`
   };
 
   await transporter.sendMail(mailOptions);
