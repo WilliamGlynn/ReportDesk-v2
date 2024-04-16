@@ -7,7 +7,7 @@ export const router = express.Router(); //create a router object
 const upload = multer({ dest: 'uploads/' }); //create foler to store uploaded files in ide
 
 router.get('/', (req, res) => {
-  res.render("import.ejs");
+  res.render("Import.ejs");
 });
 
 router.post('/', upload.single('file'), importData); // Handle file upload
