@@ -119,7 +119,7 @@ export async function getDurationReport(year){
 export async function getCoursesReport(year){
     const [rows] = await pool.query(`
     SELECT courses.courseCode, COUNT(*) AS numberOfQuestions
-    FROM Questions
+    FROM questions
     INNER JOIN courses ON questions.courseID=Courses.courseID
     WHERE EXTRACT(year from questions.dateOfQuestion)=?
     GROUP BY  questions.courseID
@@ -191,7 +191,7 @@ export async function insertQuestionNoDate(categoryID, locationID, durationID, c
 export async function insertQuestionYesDate(categoryID, locationID, durationID, courseID, notes, userID, dateOfQuestion){
     const [rows] = await pool.query(`
     INSERT 
-    INTO Questions (categoryID, locationID, durationID, courseID, notes, userID, dateOfQuestion)
+    INTO questions (categoryID, locationID, durationID, courseID, notes, userID, dateOfQuestion)
     VALUES(?,?,?,?,?,?,?);
     `, [categoryID, locationID, durationID, courseID, notes, userID, dateOfQuestion])
     console.log(rows);
