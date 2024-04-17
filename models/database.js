@@ -76,19 +76,19 @@ export async function getMonthlyReport(dateArray){
 export async function getYearlyReport(year){
     const [rows] = await pool.query(`
     SELECT
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 8) as hr8am,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 9) as hr9am,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 10) as hr10am,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 11) as hr11am,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 12) as hr12pm,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 13) as hr1pm,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 14) as hr2pm,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 15) as hr3pm,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 16) as hr4pm,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 17) as hr5pm,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 18) as hr6pm,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 19) as hr7pm,
-    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND WHERE HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 20) as hr8pm,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 8) as hr8am,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 9) as hr9am,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 10) as hr10am,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 11) as hr11am,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 12) as hr12pm,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 13) as hr1pm,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 14) as hr2pm,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 15) as hr3pm,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 16) as hr4pm,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 17) as hr5pm,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 18) as hr6pm,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 19) as hr7pm,
+    (SELECT SUM(headCount) FROM count WHERE EXTRACT(year from dateofCount)=? AND  HOUR(CONVERT_TZ(dateOfCount, 'UTC', 'America/Chicago')) = 20) as hr8pm;
     `, [year,year,year,year,year,year,year,year,year,year,year,year,year])
     console.log(rows)
     return rows
