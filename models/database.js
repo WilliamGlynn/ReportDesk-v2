@@ -120,7 +120,7 @@ export async function getCoursesReport(year){
     const [rows] = await pool.query(`
     SELECT courses.courseCode, COUNT(*) AS numberOfQuestions
     FROM questions
-    INNER JOIN courses ON questions.courseID=Courses.courseID
+    INNER JOIN courses ON questions.courseID=courses.courseID
     WHERE EXTRACT(year from questions.dateOfQuestion)=?
     GROUP BY  questions.courseID
     ORDER BY numberOfQuestions DESC
