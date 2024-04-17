@@ -63,7 +63,7 @@ class Check{
           eChecker(){
       
               var em =this.email;
-              var  con1= /(@gmail.com|@yahoo.com|@untdallas.edu)/g
+              var  con1= /(@gmail.com|@yahoo.com|@untdallas.edu|@my.untdallas.edu)/g
              
            
               
